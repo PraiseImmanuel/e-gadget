@@ -136,7 +136,11 @@ const StyledSvg = styled.svg`
 
 const Links = styled.div``;
 
-const LinkTextMobile = styled.p``;
+const LinkTextMobile = styled.p`
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+`;
 
 const StyledUL = styled.ul`
     background-color: #fff;
@@ -146,9 +150,20 @@ const StyledUL = styled.ul`
 const StyledList = styled(StyledUL)<{ dropLink: boolean }>`
     display: ${(props) => (props.dropLink ? "block" : "none")};
     position: absolute;
-    padding: 0 1rem;
+    padding: 0 0.7rem;
     right: 1.25rem;
     top: 4.625rem;
+
+    @media screen and (min-width: 768px) {
+        background-color: transparent;
+        column-gap: 2rem;
+        display: flex;
+        margin-block-end: 0;
+        margin-block-start: 0;
+        position: relative;
+        right: 0;
+        top: 0;
+    }
 `;
 
 const StyledNestedList = styled(StyledUL)`
@@ -157,10 +172,20 @@ const StyledNestedList = styled(StyledUL)`
     position: absolute;
     left: -12.06rem;
     width: 10.5rem;
+
+    @media screen and (min-width: 768px) {
+        border-right: transparent;
+        left: 0;
+        top: 3.625rem;
+        width: 100%;
+    }
 `;
 
 const StyledListItem = styled.li`
     padding: 0.6rem 3rem 0.6rem 1.5rem;
+    @media screen and (min-width: 768px) {
+        padding: 0.6rem 1.25rem;
+    }
 `;
 
 const StyledCurrencyList = styled(StyledNestedList)<{ dropCurrency: boolean }>`
@@ -172,6 +197,7 @@ const StyledLanguageList = styled(StyledNestedList)<{ dropLanguage: boolean }>`
 `;
 
 const ListWithIcon = styled.li`
+    cursor: pointer;
     padding: 0.8rem 0;
     position: relative;
 `;

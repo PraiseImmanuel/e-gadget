@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { MaxWidthContainer } from "../../components/MaxWidthContainer";
 import { HeaderTopContainer } from "./HeaderTop";
 
 const Header: React.FC = () => {
     return (
         <StyledHeader>
-            <HeaderTopContainer />
+            <MaxWidthContainer>
+                <HeaderTopContainer />
+            </MaxWidthContainer>
         </StyledHeader>
     );
 };

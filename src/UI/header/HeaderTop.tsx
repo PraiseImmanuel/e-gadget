@@ -109,7 +109,7 @@ export const HeaderTopContainer: React.FC = () => {
                             </StyledLanguageList>
                         </ListWithIcon>
 
-                        <ListWithIcon>Sign In</ListWithIcon>
+                        <ListWithIconEdge>Sign In</ListWithIconEdge>
                     </StyledList>
                 </Links>
             </HeaderTop>
@@ -200,6 +200,10 @@ const ListWithIcon = styled.li`
     cursor: pointer;
     padding: 0.8rem 0;
     position: relative;
+`;
+
+const ListWithIconEdge = styled(ListWithIcon)`
+    padding-right: 0;
 `;
 
 const DropdownSvg = styled.svg`

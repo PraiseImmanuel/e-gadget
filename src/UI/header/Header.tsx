@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MaxWidthContainer } from "../../components/MaxWidthContainer";
+import Nav from "../nav/Nav";
 import { HeaderBottomContainer } from "./HeaderBottom";
 import { HeaderTopContainer } from "./HeaderTop";
 
@@ -10,6 +11,7 @@ const Header: React.FC = () => {
             <MaxWidthContainer>
                 <HeaderTopContainer />
                 <HeaderBottomContainer />
+                <Nav />
             </MaxWidthContainer>
         </StyledHeader>
     );

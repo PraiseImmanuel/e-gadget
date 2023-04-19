@@ -6,9 +6,9 @@ import { MobileNav } from "./UI/nav/MobileNav";
 function App() {
     return (
         <React.Fragment>
+            <GlobalStyles />
             <MobileNav />
             <React.Fragment>
-                <GlobalStyles />
                 <Header />
             </React.Fragment>
         </React.Fragment>

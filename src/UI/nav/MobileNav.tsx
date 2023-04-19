@@ -41,20 +41,26 @@ export const MobileNav: React.FC = () => {
 
                 <NavOptionsContainer>
                     <NavOptions>
-                        <List></List>
-                        <List></List>
+                        <List>Menu</List>
+                        <List>Categories</List>
                     </NavOptions>
                 </NavOptionsContainer>
 
                 <NavItemsContainer>
                     <NavItems>
-                        <NavItem></NavItem>
-                        <NavItem></NavItem>
+                        <NavItem>Home</NavItem>
+                        <NavItem>Shop</NavItem>
+                        <NavItem>Product</NavItem>
+                        <NavItem>About</NavItem>
+                        <NavItem>Blog</NavItem>
                     </NavItems>
 
                     <NavItems>
-                        <NavItem></NavItem>
-                        <NavItem></NavItem>
+                        <NavItem>Household</NavItem>
+                        <NavItem>Laptop and Accesorries</NavItem>
+                        <NavItem>Phones and Accesorries</NavItem>
+                        <NavItem>Gaming</NavItem>
+                        <NavItem>Watches</NavItem>
                     </NavItems>
                 </NavItemsContainer>
 
@@ -127,21 +133,50 @@ const Input = styled.input`
     }
 `;
 
-const NavOptionsContainer = styled.div``;
+const NavOptionsContainer = styled.div`
+    margin-top: 2rem;
+`;
 
 const StyledUl = styled.ul`
+    color: #fff;
+    display: flex;
+    font-size: 1.25rem;
     list-style-type: none;
 `;
 
 const NavOptions = styled(StyledUl)``;
 
-const List = styled.li``;
+const List = styled.li`
+    font-weight: 600;
+    padding: 1.5rem 2rem;
+    position: relative;
+    text-transform: uppercase;
+    width: 50%;
+    &::after {
+        background-color: #fcb941;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 0.2rem;
+        position: absolute;
+        right: 0;
+        width: 100%;
+    }
+`;
 
 const NavItemsContainer = styled.div``;
 
-const NavItems = styled(StyledUl)``;
+const NavItems = styled(StyledUl)`
+    flex-direction: column;
+`;
 
-const NavItem = styled.li``;
+const NavItem = styled.li`
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.08);
+    font-size: 1.2rem;
+    font-weight: 300;
+    padding: 1.5rem 2rem;
+    text-transform: uppercase;
+`;
 
 const Socials = styled.div``;
 

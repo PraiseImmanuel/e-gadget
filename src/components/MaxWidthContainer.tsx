@@ -11,6 +11,7 @@ export const MaxWidthContainer: React.FC<Props> = ({ children }) => {
 
 const MaxContainer = styled.div`
     max-width: 93.5vw;
+    margin: auto;
 
     @media screen and (min-width: 990px) {
         max-width: 96.5vw;
@@ -18,6 +19,5 @@ const MaxContainer = styled.div`
 
     @media screen and (min-width: 1280px) {
         max-width: 1200px;
-        margin: auto;
     }
 `;

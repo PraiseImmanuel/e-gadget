@@ -8,4 +8,21 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     transition: all 0.5s ease-in-out;
   }
+
+  button{
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font: inherit;
+    text-transform: inherit;
+
+    &:focus{
+      outline:none;
+    }
+  }
+
+  ul{
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
 `;

@@ -1,8 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const MobileNav: React.FC = () => {
     const [closeMenu, setCloseMenu] = useState<boolean>(false);
+    const [inputIsFocus, setInputIsFocus] = useState<boolean>(false);
+    const [selectMenu, setSelectMenu] = useState<boolean>(true);
+    const [selectCategories, setSelectCategories] = useState<boolean>(false);
+
+    const handleSelectMenu: () => void = () => {
+        setSelectCategories(false);
+        setSelectMenu(true);
+    };
+
+    const handleSelectCategories: () => void = () => {
+        setSelectCategories(true);
+        setSelectMenu(false);
+    };
 
     return (
         <React.Fragment>
@@ -21,11 +35,13 @@ export const MobileNav: React.FC = () => {
 
                 <SearchBar>
                     <StyledForm>
-                        <InputContainer>
+                        <InputContainer focus={inputIsFocus}>
                             <Input
                                 type="search"
                                 placeholder="Search product..."
                                 required
+                                onFocus={() => setInputIsFocus(true)}
+                                onBlur={() => setInputIsFocus(false)}
                             />
                             <SearchIconContainer>
                                 <Icon
@@ -43,34 +59,66 @@ export const MobileNav: React.FC = () => {
 
                 <NavOptionsContainer>
                     <NavOptions>
-                        <List>Menu</List>
-                        <List>Categories</List>
+                        <Menu selectMenu={selectMenu}>
+                            <NavOptionButton onClick={() => handleSelectMenu()}>
+                                Menu
+                            </NavOptionButton>
+                        </Menu>
+                        <Categories selectCategories={selectCategories}>
+                            <NavOptionButton
+                                onClick={() => handleSelectCategories()}
+                            >
+                                Categories
+                            </NavOptionButton>
+                        </Categories>
                     </NavOptions>
                 </NavOptionsContainer>
 
                 <NavItemsContainer>
-                    <NavItems>
-                        <NavItem>Home</NavItem>
-                        <NavItem>Shop</NavItem>
-                        <NavItem>Product</NavItem>
-                        <NavItem>About</NavItem>
-                        <NavItem>Blog</NavItem>
-                    </NavItems>
+                    <AnimatePresence initial={false}>
+                        {selectMenu && (
+                            <MenuItems
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{
+                                    ease: "linear",
+                                    duration: 0.15,
+                                }}
+                            >
+                                <MenuItem>Home</MenuItem>
+                                <MenuItem>Shop</MenuItem>
+                                <MenuItem>Product</MenuItem>
+                                <MenuItem>About</MenuItem>
+                                <MenuItem>Blog</MenuItem>
+                            </MenuItems>
+                        )}
+                    </AnimatePresence>
 
-                    <NavItems>
-                        <NavItem>Household</NavItem>
-                        <NavItem>Laptop and Accesorries</NavItem>
-                        <NavItem>Phones and Accesorries</NavItem>
-                        <NavItem>Gaming</NavItem>
-                        <NavItem>Watches</NavItem>
-                    </NavItems>
+                    <AnimatePresence initial={false}>
+                        {selectCategories && (
+                            <CategoriesItems
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{
+                                    ease: "linear",
+                                    duration: 0.15,
+                                }}
+                            >
+                                <NavItem>Household</NavItem>
+                                <NavItem>Laptop and Accesorries</NavItem>
+                                <NavItem>Phones and Accesorries</NavItem>
+                                <NavItem>Gaming</NavItem>
+                                <NavItem>Watches</NavItem>
+                            </CategoriesItems>
+                        )}
+                    </AnimatePresence>
                 </NavItemsContainer>
 
                 <Socials>
-                    <Social>
+                    <Social href="p.com">
                         <SocialSvg
-                            height="2rem"
-                            width="2rem"
+                            height="1.25rem"
+                            width="1.25rem"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 320 512"
                         >
@@ -78,10 +126,10 @@ export const MobileNav: React.FC = () => {
                         </SocialSvg>
                     </Social>
 
-                    <Social>
+                    <Social href="p.com">
                         <SocialSvg
-                            height="2rem"
-                            width="2rem"
+                            height="1.25rem"
+                            width="1.25rem"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
                         >
@@ -89,10 +137,10 @@ export const MobileNav: React.FC = () => {
                         </SocialSvg>
                     </Social>
 
-                    <Social>
+                    <Social href="p.com">
                         <SocialSvg
-                            height="2rem"
-                            width="2rem"
+                            height="1.25rem"
+                            width="1.25rem"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 448 512"
                         >
@@ -100,10 +148,10 @@ export const MobileNav: React.FC = () => {
                         </SocialSvg>
                     </Social>
 
-                    <Social>
+                    <Social href="p.com">
                         <SocialSvg
-                            height="2rem"
-                            width="2rem"
+                            height="1.25rem"
+                            width="1.25rem"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 384 512"
                         >
@@ -140,8 +188,6 @@ const MobileNavContainer = styled.div<{ closeMenu: boolean }>`
 
 const CloseIcon = styled.button`
     align-self: end;
-    background-color: transparent;
-    border: none;
     margin: 1.5rem;
 `;
 
@@ -153,17 +199,21 @@ const SearchBar = styled.div``;
 
 const StyledForm = styled.form``;
 
-const InputContainer = styled.div`
-    border: 1px solid rgba(255, 255, 255, 0.1);
+const InputContainer = styled.div<{ focus: boolean }>`
+    border: 1px solid;
+    border-color: ${(props) =>
+        props.focus ? "#fcb941" : "rgba(255, 255, 255, 0.1)"};
     display: flex;
     justify-content: space-between;
     margin: auto;
     max-width: calc(100% - 36px);
+    transition: all 0.4s ease-in;
 `;
 
 const SearchIconContainer = styled.div`
     align-items: center;
     background: #fcb941;
+    border: 1px solid rgb(252, 185, 65);
     display: flex;
     padding: 1rem 1.25rem;
     justify-content: center;
@@ -175,6 +225,7 @@ const Input = styled.input`
     color: #777;
     font-size: 1.25rem;
     padding-left: 1rem;
+    transition: all 0.4s ease-in;
     &:focus {
         outline: none;
         color: #fff;
@@ -196,7 +247,6 @@ const NavOptions = styled(StyledUl)``;
 
 const List = styled.li`
     font-weight: 600;
-    padding: 1.5rem 2rem;
     position: relative;
     text-transform: uppercase;
     width: 50%;
@@ -208,26 +258,93 @@ const List = styled.li`
         height: 0.2rem;
         position: absolute;
         right: 0;
+        transition: transform 0.3s ease;
         width: 100%;
+    }
+`;
+
+const Menu = styled(List)<{ selectMenu: boolean }>`
+    &::after {
+        transform-origin: ${(props) =>
+            props.selectMenu ? "left center" : "right center"};
+        transform: ${(props) =>
+            props.selectMenu ? "scale(1, 1)" : "scale(0,1)"};
+    }
+`;
+
+const Categories = styled(List)<{ selectCategories: boolean }>`
+    &::after {
+        transform-origin: ${(props) =>
+            props.selectCategories ? "left center" : "right center"};
+        transform: ${(props) =>
+            props.selectCategories ? "scale(1, 1)" : "scale(0,1)"};
+    }
+`;
+
+const NavOptionButton = styled.button`
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.08);
+    padding: 1.5rem 2rem;
+    text-align: left;
+    width: 100%;
+    &:hover {
+        color: #fcb941;
+        transition: color 0.2s ease-in-out;
     }
 `;
 
 const NavItemsContainer = styled.div``;
 
-const NavItems = styled(StyledUl)`
+const NavItems = styled(motion.ul)`
+    color: #fff;
+    display: flex;
     flex-direction: column;
+    font-size: 1.25rem;
+    list-style-type: none;
 `;
+
+const MenuItems = styled(NavItems)``;
+
+const CategoriesItems = styled(NavItems)``;
 
 const NavItem = styled.li`
     border-bottom: 0.1rem solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 1.2rem;
     font-weight: 300;
     padding: 1.5rem 2rem;
+`;
+
+const MenuItem = styled(NavItem)`
+    font-weight: 300;
     text-transform: uppercase;
 `;
 
-const Socials = styled.div``;
+const Socials = styled.div`
+    column-gap: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+`;
 
-const Social = styled.div``;
+const Social = styled.a`
+    align-items: center;
+    border: 0.1rem solid rgb(255, 255, 255, 0.45);
+    border-radius: 50%;
+    display: flex;
+    height: 2.7rem;
+    justify-content: center;
+    transition: all 0.35s ease;
+    width: 2.7rem;
 
-const SocialSvg = styled.svg``;
+    &:hover {
+        border-color: #fcb941;
+    }
+`;
+
+const SocialSvg = styled.svg`
+    fill: rgb(255, 255, 255, 0.45);
+
+    ${Social}:hover & {
+        fill: #fcb941;
+    }
+`;

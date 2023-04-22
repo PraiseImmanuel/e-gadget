@@ -129,6 +129,7 @@ const UserSelectedItemBox = styled.div`
     margin-top: -0.5rem;
     padding: 0 1.8rem;
     @media screen and (min-width: 768px) {
+        column-gap: 3.5rem;
         padding-right: 0;
     }
 `;

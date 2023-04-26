@@ -4,10 +4,16 @@ import styled from "styled-components";
 import { useOnClickOutside } from "../../custom-hooks/useOnClickOutside";
 
 export const HeaderTopContainer: React.FC = () => {
+    // state for dropping down Link container
     const [dropLinks, setDropLinks] = useState<boolean>(false);
+
+    // state for dropping down Currency options
     const [dropCurrency, setDropCurrency] = useState<boolean>(false);
+
+    // state for dropping down Language options
     const [dropLanguage, setDropLanguage] = useState<boolean>(false);
 
+    // Ref to entire links container
     const linksRef = useRef<HTMLDivElement>(null);
 
     const handleLinksDropdown: (event: Event) => void = () => {
@@ -16,6 +22,7 @@ export const HeaderTopContainer: React.FC = () => {
         setDropLinks(false);
     };
 
+    // Custom hook for noticing click outside an element and running a function
     useOnClickOutside(linksRef, handleLinksDropdown);
 
     const handleCurrencyDropdown: () => void = () => {

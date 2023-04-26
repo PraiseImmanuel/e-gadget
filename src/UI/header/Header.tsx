@@ -7,6 +7,7 @@ import { HeaderTopContainer } from "./HeaderTop";
 
 const Header: React.FC = () => {
     return (
+        // Full header container
         <StyledHeader>
             <MaxWidthContainer>
                 <HeaderTopContainer />

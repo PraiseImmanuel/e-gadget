@@ -6,7 +6,12 @@ type Props = {
 };
 
 export const MaxWidthContainer: React.FC<Props> = ({ children }) => {
-    return <MaxContainer>{children}</MaxContainer>;
+    return (
+        <MaxContainer>
+            {/* Sets the maximum width for the page on screens */}
+            {children}
+        </MaxContainer>
+    );
 };
 
 const MaxContainer = styled.div`

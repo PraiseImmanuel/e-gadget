@@ -1,8 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
+/* 
+-Fixes and general styling- 
+*/
   body {
-    
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;

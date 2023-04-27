@@ -6,12 +6,13 @@ import { closeMenu } from "../../store/slice/mobileMenuSlice";
 
 export const MobileNav: React.FC = () => {
     const dispatch = useAppDispatch();
-
+    // Get state for closing and opening mobile menu nav
     const isMenuClosed = useAppSelector(
         (state) => state.toggleMobileMenu.isMenuClosed
     );
-
+    // state for styling the input container
     const [inputIsFocus, setInputIsFocus] = useState<boolean>(false);
+    // state for toggling between Menu and Categories Nav
     const [selectMenu, setSelectMenu] = useState<boolean>(true);
     const [selectCategories, setSelectCategories] = useState<boolean>(false);
 

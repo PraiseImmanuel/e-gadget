@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MaxWidthContainer } from "../../components/MaxWidthContainer";
 
 const Nav: React.FC = () => {
+    // state for hovering categories nav
     const [isCategoriesHovered, setisCategoriesHovered] = useState(false);
 
     return (
@@ -68,6 +69,7 @@ const Nav: React.FC = () => {
                             <MenuItem>Blog</MenuItem>
                         </MenuItems>
                     </NavMenu>
+
                     <Discount>
                         <DiscountP>
                             <Span>Clearance</Span> Up to 30% Off

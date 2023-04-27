@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
+    overflow: hidden;
     transition: all 0.5s ease-in-out;
   }
 
@@ -26,5 +27,9 @@ export const GlobalStyles = createGlobalStyle`
   ul{
     margin-block-start: 0;
     margin-block-end: 0;
+  }
+
+  #root{
+    overflow: hidden;
   }
 `;

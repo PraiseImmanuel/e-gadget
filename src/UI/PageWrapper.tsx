@@ -20,7 +20,7 @@ const PageWrapper: React.FC = () => {
 export default PageWrapper;
 
 const PageWrapperContainer = styled.div<{ menu: boolean }>`
-    min-height: 100%;
+    min-height: 99.99999vh;
     transform: ${(props) =>
         props.menu ? "translateX(0)" : "translateX(20rem)"};
     transition: transform 0.43s ease-in-out;

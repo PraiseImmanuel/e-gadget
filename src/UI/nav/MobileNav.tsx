@@ -33,7 +33,7 @@ export const MobileNav: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{
-                            ease: "linear",
+                            ease: "easeIn",
                             duration: 0.15,
                         }}
                         exit={{ opacity: 0 }}
@@ -47,7 +47,7 @@ export const MobileNav: React.FC = () => {
                         initial={{ translateX: "0" }}
                         animate={{ translateX: "28rem" }}
                         transition={{
-                            ease: "linear",
+                            ease: "easeIn",
                             duration: 0.4,
                         }}
                         exit={{ translateX: "0" }}

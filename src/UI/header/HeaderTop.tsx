@@ -81,6 +81,8 @@ export const HeaderTopContainer: React.FC = () => {
                         Links
                         <DropdownSvg
                             xmlns="http://www.w3.org/2000/svg"
+                            height="1rem"
+                            width="1rem"
                             viewBox="0 0 320 512"
                         >
                             <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
@@ -91,6 +93,8 @@ export const HeaderTopContainer: React.FC = () => {
                             Currency
                             <DropdownSvg
                                 xmlns="http://www.w3.org/2000/svg"
+                                height="1rem"
+                                width="1rem"
                                 viewBox="0 0 320 512"
                             >
                                 <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
@@ -105,6 +109,8 @@ export const HeaderTopContainer: React.FC = () => {
                             Language
                             <DropdownSvg
                                 xmlns="http://www.w3.org/2000/svg"
+                                height="1rem"
+                                width="1rem"
                                 viewBox="0 0 320 512"
                             >
                                 <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
@@ -177,7 +183,7 @@ const StyledNestedList = styled(StyledUL)`
     border-right: 1px solid #999999;
     padding-inline-start: 0.5rem;
     position: absolute;
-    left: -12.06rem;
+    left: -11.8rem;
     width: 10.5rem;
 
     @media screen and (min-width: 768px) {
@@ -215,7 +221,5 @@ const ListWithIconEdge = styled(ListWithIcon)`
 
 const DropdownSvg = styled.svg`
     fill: #777;
-    height: 1rem;
     margin-left: 0.5rem;
-    width: 1rem;
 `;

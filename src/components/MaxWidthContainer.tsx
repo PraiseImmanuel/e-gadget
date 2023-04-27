@@ -15,6 +15,10 @@ export const MaxWidthContainer: React.FC<Props> = ({ children }) => {
 };
 
 const MaxContainer = styled.div`
+    @media screen and (max-width: 320px) {
+        overflow: scroll;
+    }
+
     max-width: 93.5vw;
     margin: auto;
 

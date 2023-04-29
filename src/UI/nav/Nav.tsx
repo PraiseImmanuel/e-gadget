@@ -86,6 +86,7 @@ export default Nav;
 const NavBar = styled.nav`
     border-bottom: 1px solid #ebebeb;
     position: fixed;
+    top: 13.4rem;
     width: 100%;
 
     @media screen and (max-width: 920px) {

@@ -8,8 +8,8 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
-    overflow: hidden;
     transition: all 0.5s ease-in-out;
+    overflow-x:hidden;
   }
 
   button{
@@ -29,7 +29,9 @@ export const GlobalStyles = createGlobalStyle`
     margin-block-end: 0;
   }
 
-  #root{
-    overflow: hidden;
+  a{
+    color:inherit;font:inherit;
+    text-decoration:none;
   }
+  
 `;

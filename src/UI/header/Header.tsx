@@ -22,8 +22,10 @@ const StyledHeader = styled.header`
     font-weight: 300;
     font-size: 1.3rem;
     line-height: 1.5;
-    padding: 1.25rem;
+    padding-top: 1.25rem;
     padding-bottom: 0.5rem;
+    /* position: fixed; */
+    /* width: 100%; */
 `;
 
 export default Header;

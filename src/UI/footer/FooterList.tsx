@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { MaxWidthContainer } from "../../components/MaxWidthContainer";
 
 interface ListItems {
     text: string;
@@ -21,24 +20,24 @@ const FooterList: React.FC<Props> = ({ link }: Props) => {
     const listItems = link.listItems;
 
     return (
-        <MaxWidthContainer>
-            <ListContainer>
-                <ListHeading>{heading}</ListHeading>
-                <List>
-                    {listItems?.map((item) => (
-                        <ListItem key={item.text}>
-                            <A href={item.hRef}>{item.text}</A>
-                        </ListItem>
-                    ))}
-                </List>
-            </ListContainer>
-        </MaxWidthContainer>
+        <ListContainer>
+            <ListHeading>{heading}</ListHeading>
+            <List>
+                {listItems?.map((item) => (
+                    <ListItem key={item.text}>
+                        <A href={item.hRef}>{item.text}</A>
+                    </ListItem>
+                ))}
+            </List>
+        </ListContainer>
     );
 };
 
 export default FooterList;
 
-const ListContainer = styled.div``;
+const ListContainer = styled.div`
+    margin-bottom: 5rem;
+`;
 
 const ListHeading = styled.h3`
     color: #333333;
@@ -58,5 +57,5 @@ const ListItem = styled.li`
 const A = styled.a`
     color: #777;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 300;
 `;

@@ -15,7 +15,7 @@ interface Links {
 export const NewLinks: Links = {
     links: [
         {
-            heading: "Usefull Links",
+            heading: "Useful Links",
             listItems: [
                 { text: "About e-gadgets", hRef: "about.com" },
                 { text: "Our Services", hRef: "about.com" },

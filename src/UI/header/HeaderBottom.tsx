@@ -22,7 +22,7 @@ export const HeaderBottomContainer: React.FC = () => {
             </Hamburger>
 
             <LogoBox>
-                <Logo src={logo} alt="logo" />
+                <Logo src={logo} alt="logo" height="29px" width="130px" />
             </LogoBox>
 
             <SearchBar>

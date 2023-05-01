@@ -7,9 +7,13 @@ export const GlobalStyles = createGlobalStyle`
   body {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 16px;line-height: 1.86;
     transition: all 0.5s ease-in-out;
     overflow-x:hidden;
+  }
+
+  #root{
+    overflow-x: hidden;
   }
 
   button{
@@ -34,4 +38,9 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration:none;
   }
   
+
+  h3{
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
 `;

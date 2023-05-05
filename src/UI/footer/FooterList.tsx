@@ -56,6 +56,27 @@ const ListItem = styled.li`
 
 const A = styled.a`
     color: #777;
+    display: flex;
+    flex-direction: column;
     font-size: 1.5rem;
     font-weight: 300;
+    position: relative;
+    width: fit-content;
+    &::after {
+        align-self: center;
+        background-color: #fcb941;
+        bottom: -0.5rem;
+        content: "";
+        display: block;
+        height: 0.1rem;
+        position: absolute;
+        transition: width ease-in 0.3s;
+        width: 0;
+    }
+
+    &:hover {
+        &::after {
+            width: 100%;
+        }
+    }
 `;

@@ -12,6 +12,9 @@ const Nav: React.FC = () => {
         <NavBar>
             <MaxWidthContainer>
                 <NavBarWrapper>
+                    {/* In order to use the animate presence functionality 
+                    I used js instead of css for this styling
+                     */}
                     <Categories
                         onMouseOver={() => setisCategoriesHovered(true)}
                         onMouseOut={() => setisCategoriesHovered(false)}
@@ -46,15 +49,31 @@ const Nav: React.FC = () => {
                                     }}
                                     exit={{ opacity: 0 }}
                                 >
-                                    <CategoriesItem>Household</CategoriesItem>
-                                    <CategoriesItem>
-                                        Laptop and Accesorries
-                                    </CategoriesItem>
-                                    <CategoriesItem>
-                                        Phones and Accesorries
-                                    </CategoriesItem>
-                                    <CategoriesItem>Gaming</CategoriesItem>
-                                    <CategoriesItem>Watches</CategoriesItem>
+                                    <CategoriesA href="s.com">
+                                        <CategoriesItem>
+                                            Household
+                                        </CategoriesItem>
+                                    </CategoriesA>
+
+                                    <CategoriesA href="s.com">
+                                        <CategoriesItem>
+                                            Laptop and Accesorries
+                                        </CategoriesItem>
+                                    </CategoriesA>
+
+                                    <CategoriesA href="s.com">
+                                        <CategoriesItem>
+                                            Phones and Accesorries
+                                        </CategoriesItem>
+                                    </CategoriesA>
+
+                                    <CategoriesA href="s.com">
+                                        <CategoriesItem>Gaming</CategoriesItem>
+                                    </CategoriesA>
+
+                                    <CategoriesA href="s.com">
+                                        <CategoriesItem>Watches</CategoriesItem>
+                                    </CategoriesA>
                                 </CategoriesItems>
                             )}
                         </AnimatePresence>
@@ -62,11 +81,21 @@ const Nav: React.FC = () => {
 
                     <NavMenu>
                         <MenuItems>
-                            <MenuItem>Home</MenuItem>
-                            <MenuItem>Shop</MenuItem>
-                            <MenuItem>Product</MenuItem>
-                            <MenuItem>About</MenuItem>
-                            <MenuItem>Blog</MenuItem>
+                            <MenuItem>
+                                <a href="s.com"> Home </a>
+                            </MenuItem>
+                            <MenuItem>
+                                <a href="s.com"> Shop </a>
+                            </MenuItem>
+                            <MenuItem>
+                                <a href="s.com">Product</a>
+                            </MenuItem>
+                            <MenuItem>
+                                <a href="s.com"> About </a>
+                            </MenuItem>
+                            <MenuItem>
+                                <a href="s.com"> Blog </a>
+                            </MenuItem>
                         </MenuItems>
                     </NavMenu>
 
@@ -85,10 +114,6 @@ export default Nav;
 
 const NavBar = styled.nav`
     border-bottom: 1px solid #ebebeb;
-    position: fixed;
-    top: 13.4rem;
-    width: 100%;
-
     @media screen and (max-width: 920px) {
         display: none;
     }
@@ -97,7 +122,7 @@ const NavBar = styled.nav`
 const NavBarWrapper = styled.div`
     align-items: center;
     display: flex;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     justify-content: space-between;
 `;
 
@@ -109,8 +134,8 @@ const BrowseCategories = styled.div<{ hovered: boolean }>`
     align-items: center;
     background-color: ${(props) => (props.hovered ? "#fcb941" : "#fff")};
     color: ${(props) => (props.hovered ? "#fff" : "#333")};
+    cursor: pointer;
     display: flex;
-    padding: 0.5rem 0;
     position: relative;
     transition: all 0.2s ease;
     &::after {
@@ -143,10 +168,6 @@ const P = styled.p`
     font-weight: 500;
 `;
 
-const DiscountP = styled(P)`
-    color: #333;
-`;
-
 const CategoriesItems = styled(motion.ul)`
     background-color: #fff;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -154,8 +175,15 @@ const CategoriesItems = styled(motion.ul)`
     font-weight: 300;
     list-style-type: none;
     position: absolute;
-    top: 5.75rem;
+    top: 4.8rem;
     width: 100%;
+`;
+
+const CategoriesA = styled.a`
+    transition: color ease 0.25s;
+    &:hover {
+        color: #fcb941;
+    }
 `;
 
 const CategoriesItem = styled.li`
@@ -163,9 +191,6 @@ const CategoriesItem = styled.li`
     border-top: none;
     letter-spacing: -0.01em;
     padding: 1rem 2rem;
-    &:last-child {
-        padding-bottom: 2rem;
-    }
 `;
 
 const NavMenu = styled.div``;
@@ -177,7 +202,33 @@ const MenuItems = styled.ul`
 `;
 
 const MenuItem = styled.li`
-    padding: 2rem 1.5rem;
+    color: #333;
+    padding: 1rem 1.5rem;
+    position: relative;
+    text-align: center;
+    transition: all ease 0.25s;
+
+    &::after {
+        background-color: #fcb941;
+        bottom: -0.1rem;
+        content: "";
+        display: block;
+        height: 0.15rem;
+        position: absolute;
+        right: 0;
+        transform-origin: right center;
+        transform: scaleX(0);
+        transition: transform ease 0.25s;
+        width: 100%;
+    }
+
+    &:hover {
+        color: #fcb941;
+        &::after {
+            transform-origin: left center;
+            transform: scaleX(1);
+        }
+    }
 `;
 
 const Discount = styled.div`
@@ -198,6 +249,11 @@ const Discount = styled.div`
         }
     }
 `;
+
+const DiscountP = styled(P)`
+    color: #333;
+`;
+
 const Span = styled.span`
     color: #777;
 `;

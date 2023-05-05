@@ -43,4 +43,9 @@ export const GlobalStyles = createGlobalStyle`
     margin-block-start: 0;
     margin-block-end: 0;
   }
+
+  p{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    }
 `;

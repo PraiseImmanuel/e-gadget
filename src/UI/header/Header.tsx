@@ -24,8 +24,6 @@ const StyledHeader = styled.header`
     line-height: 1.5;
     padding-top: 1.25rem;
     padding-bottom: 0.5rem;
-    /* position: fixed; */
-    /* width: 100%; */
 `;
 
 export default Header;

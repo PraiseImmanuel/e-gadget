@@ -4,59 +4,41 @@ import styled from "styled-components";
 import { useOnClickOutside } from "../../custom-hooks/useOnClickOutside";
 
 export const HeaderTopContainer: React.FC = () => {
-    // state for dropping down Link container
+    // state for dropping down Link container for mobile screen
     const [dropLinks, setDropLinks] = useState<boolean>(false);
-
-    // state for dropping down Currency options
-    const [dropCurrency, setDropCurrency] = useState<boolean>(false);
-
-    // state for dropping down Language options
-    const [dropLanguage, setDropLanguage] = useState<boolean>(false);
 
     // Ref to entire links container
     const linksRef = useRef<HTMLDivElement>(null);
 
+    // function for setting the state of drop links to false
+    //when a user clicks outside the link's container
     const handleLinksDropdown: (event: Event) => void = () => {
-        setDropCurrency(false);
-        setDropLanguage(false);
         setDropLinks(false);
     };
 
     // Custom hook for noticing click outside an element and running a function
     useOnClickOutside(linksRef, handleLinksDropdown);
 
-    const handleCurrencyDropdown: () => void = () => {
-        if (dropLanguage) {
-            setDropLanguage(false);
-        }
-        setDropCurrency(!dropCurrency);
-    };
-
-    const handleLanguageDropDown: () => void = () => {
-        if (dropCurrency) {
-            setDropCurrency(false);
-        }
-        setDropLanguage(!dropLanguage);
-    };
-
     return (
         <React.Fragment>
             <HeaderTop>
-                <ContactNum>
-                    <StyledSvg
-                        height="2rem"
-                        width="2rem"
-                        version="1.1"
-                        id="Capa_1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        viewBox="0 0 202.592 202.592"
-                        xmlSpace="preserve"
-                    >
-                        <g>
+                {/* Contact Container */}
+                <div>
+                    <ContactNum href="tel: +2349157422372">
+                        <StyledSvg
+                            height="2rem"
+                            width="2rem"
+                            version="1.1"
+                            id="Capa_1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlnsXlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 202.592 202.592"
+                            xmlSpace="preserve"
+                        >
                             <g>
-                                <path
-                                    d="M198.048,160.105l-31.286-31.29c-6.231-6.206-16.552-6.016-23.001,0.433l-15.761,15.761
+                                <g>
+                                    <path
+                                        d="M198.048,160.105l-31.286-31.29c-6.231-6.206-16.552-6.016-23.001,0.433l-15.761,15.761
 			c-0.995-0.551-2.026-1.124-3.11-1.732c-9.953-5.515-23.577-13.074-37.914-27.421C72.599,101.48,65.03,87.834,59.5,77.874
 			c-0.587-1.056-1.145-2.072-1.696-3.038l10.579-10.565l5.2-5.207c6.46-6.46,6.639-16.778,0.419-23.001L42.715,4.769
 			c-6.216-6.216-16.541-6.027-23.001,0.433l-8.818,8.868l0.243,0.24c-2.956,3.772-5.429,8.124-7.265,12.816
@@ -69,13 +51,15 @@ export const HeaderTopContainer: React.FC = () => {
 			c1.084,1.829,2.23,3.879,3.454,6.106c5.812,10.482,13.764,24.83,29.121,40.173c15.317,15.325,29.644,23.27,40.094,29.067
 			c2.258,1.249,4.32,2.398,6.17,3.5l3.289,1.95l21.115-21.122c2.634-2.623,6.739-2.817,9.137-0.426l31.272,31.279
 			C193.5,169.446,193.31,173.537,190.683,176.164z"
-                                />
+                                    />
+                                </g>
                             </g>
-                        </g>
-                    </StyledSvg>
-                    <p>+234 9157 422 372</p>
-                </ContactNum>
+                        </StyledSvg>
+                        <ContactP>+234 9157 422 372</ContactP>
+                    </ContactNum>
+                </div>
 
+                {/* Links Container */}
                 <Links ref={linksRef}>
                     <LinkTextMobile onClick={() => setDropLinks(!dropLinks)}>
                         Links
@@ -88,8 +72,10 @@ export const HeaderTopContainer: React.FC = () => {
                             <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
                         </DropdownSvg>
                     </LinkTextMobile>
+
+                    {/* List of Links */}
                     <StyledList dropLink={dropLinks}>
-                        <ListWithIcon onClick={() => handleCurrencyDropdown()}>
+                        <ListWithIcon>
                             Currency
                             <DropdownSvg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -99,13 +85,13 @@ export const HeaderTopContainer: React.FC = () => {
                             >
                                 <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
                             </DropdownSvg>
-                            <StyledCurrencyList dropCurrency={dropCurrency}>
+                            <StyledNestedList>
                                 <StyledListItem>USD</StyledListItem>
                                 <StyledListItem>NGN</StyledListItem>
-                            </StyledCurrencyList>
+                            </StyledNestedList>
                         </ListWithIcon>
 
-                        <ListWithIcon onClick={() => handleLanguageDropDown()}>
+                        <ListWithIcon>
                             Language
                             <DropdownSvg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -115,11 +101,11 @@ export const HeaderTopContainer: React.FC = () => {
                             >
                                 <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
                             </DropdownSvg>
-                            <StyledLanguageList dropLanguage={dropLanguage}>
+                            <StyledNestedList>
                                 <StyledListItem>English</StyledListItem>
                                 <StyledListItem>French</StyledListItem>
                                 <StyledListItem>Spanish</StyledListItem>
-                            </StyledLanguageList>
+                            </StyledNestedList>
                         </ListWithIcon>
 
                         <ListWithIconEdge>Sign In</ListWithIconEdge>
@@ -130,13 +116,17 @@ export const HeaderTopContainer: React.FC = () => {
     );
 };
 
+// Entire header top container
 const HeaderTop = styled.div`
+    align-items: center;
     border-bottom: 1px solid #444;
     display: flex;
     justify-content: space-between;
 `;
 
-const ContactNum = styled.div`
+// Contact Container
+
+const ContactNum = styled.a`
     align-items: center;
     display: flex;
 `;
@@ -144,8 +134,21 @@ const ContactNum = styled.div`
 const StyledSvg = styled.svg`
     fill: #777;
     margin-right: 0.5rem;
+    transition: color ease 0.25s;
     width: 1.35rem;
+    ${ContactNum}:hover & {
+        fill: #fcb941;
+    }
 `;
+
+const ContactP = styled.p`
+    transition: color ease 0.25s;
+    ${ContactNum}:hover & {
+        color: #fcb941;
+    }
+`;
+
+// Links Container
 
 const Links = styled.div``;
 
@@ -166,6 +169,7 @@ const StyledList = styled(StyledUL)<{ dropLink: boolean }>`
     padding: 0 0.7rem;
     right: 1.25rem;
     top: 4.625rem;
+    z-index: 1;
 
     @media screen and (min-width: 768px) {
         background-color: transparent;
@@ -179,12 +183,38 @@ const StyledList = styled(StyledUL)<{ dropLink: boolean }>`
     }
 `;
 
+const StyledListItem = styled.li`
+    padding: 0.6rem 3rem 0.6rem 1.5rem;
+
+    &:hover {
+        color: #fcb941;
+    }
+    @media screen and (min-width: 768px) {
+        padding: 0.6rem 1.25rem;
+    }
+`;
+
+const ListWithIcon = styled.li`
+    cursor: pointer;
+    padding: 0.8rem 0;
+    position: relative;
+    transition: color ease 0.25s;
+    &:hover {
+        color: #fcb941;
+    }
+`;
+
 const StyledNestedList = styled(StyledUL)`
     border-right: 1px solid #999999;
+    color: #777;
+    display: none;
     padding-inline-start: 0.5rem;
     position: absolute;
     left: -11.8rem;
     width: 10.5rem;
+    ${ListWithIcon}:hover & {
+        display: block;
+    }
 
     @media screen and (min-width: 768px) {
         border-right: transparent;
@@ -194,27 +224,7 @@ const StyledNestedList = styled(StyledUL)`
     }
 `;
 
-const StyledListItem = styled.li`
-    padding: 0.6rem 3rem 0.6rem 1.5rem;
-    @media screen and (min-width: 768px) {
-        padding: 0.6rem 1.25rem;
-    }
-`;
-
-const StyledCurrencyList = styled(StyledNestedList)<{ dropCurrency: boolean }>`
-    display: ${(props) => (props.dropCurrency ? "block" : "none")};
-`;
-
-const StyledLanguageList = styled(StyledNestedList)<{ dropLanguage: boolean }>`
-    display: ${(props) => (props.dropLanguage ? "block" : "none")};
-`;
-
-const ListWithIcon = styled.li`
-    cursor: pointer;
-    padding: 0.8rem 0;
-    position: relative;
-`;
-
+// remove padding from last item on the list
 const ListWithIconEdge = styled(ListWithIcon)`
     padding-right: 0;
 `;

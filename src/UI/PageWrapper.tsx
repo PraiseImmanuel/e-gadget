@@ -1,27 +1,105 @@
-import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { MaxWidthContainer } from "../components/MaxWidthContainer";
 import { useAppSelector } from "../store/store";
-import FooterTop from "./footer/FooterTop";
+import Footer from "./footer/Footer";
 import Header from "./header/Header";
+import { HeaderBottomContainer } from "./header/HeaderBottom";
 import Nav from "./nav/Nav";
 
 const PageWrapper: React.FC = () => {
+    const [showNav, setShowNav] = useState(false);
+    const showFixedNav: () => void = () => {
+        //eslint-disable-next-line
+        console.log("here");
+        document.body.scrollTop > 225 ||
+        document.documentElement.scrollTop > 225
+            ? setShowNav(true)
+            : setShowNav(false);
+    };
+
     const isMenuClosed = useAppSelector(
         (state) => state.toggleMobileMenu.isMenuClosed
     );
+
+    useEffect(() => {
+        window.onscroll = () => {
+            showFixedNav();
+        };
+    }, []);
     return (
-        <PageWrapperContainer menu={isMenuClosed}>
-            <Header />
-            <Nav />
-            <MainWrapper></MainWrapper>
-            <FooterTop />
+        <PageWrapperContainer>
+            <AnimatePresence>
+                {showNav && (
+                    <FixedNav
+                        initial={{ translateY: "-5rem" }}
+                        animate={{ translateY: "0rem" }}
+                        transition={{
+                            ease: "linear",
+                            duration: 0.4,
+                        }}
+                    >
+                        <Nav />
+                    </FixedNav>
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {showNav && (
+                    <FixedMobileNav
+                        initial={{ translateY: "-5rem" }}
+                        animate={{ translateY: "0rem" }}
+                        transition={{
+                            ease: "linear",
+                            duration: 0.4,
+                        }}
+                    >
+                        <MaxWidthContainer>
+                            <HeaderBottomContainer />
+                        </MaxWidthContainer>
+                    </FixedMobileNav>
+                )}
+            </AnimatePresence>
+
+            <AnimatedPageWrapper menu={isMenuClosed}>
+                <Header />
+                <Nav />
+                <MainWrapper></MainWrapper>
+                <Footer />
+            </AnimatedPageWrapper>
+            <ScrollToTop></ScrollToTop>
         </PageWrapperContainer>
     );
 };
 
 export default PageWrapper;
 
-const PageWrapperContainer = styled.div<{ menu: boolean }>`
+const PageWrapperContainer = styled.div``;
+
+const FixedNav = styled(motion.div)`
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 11;
+`;
+
+const FixedMobileNav = styled(motion.div)`
+    background-color: #333333;
+    color: #777;
+    font-weight: 300;
+    font-size: 1.3rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 11;
+    @media screen and (min-width: 920px) {
+        display: none;
+    }
+`;
+
+const AnimatedPageWrapper = styled.div<{ menu: boolean }>`
     min-height: 99.99999vh;
     transform: ${(props) =>
         props.menu ? "translateX(0)" : "translateX(20rem)"};
@@ -30,5 +108,7 @@ const PageWrapperContainer = styled.div<{ menu: boolean }>`
 
 const MainWrapper = styled.div`
     padding-top: 19.4rem;
-    min-height: 80vh;
+    min-height: 50vh;
 `;
+
+const ScrollToTop = styled.button``;

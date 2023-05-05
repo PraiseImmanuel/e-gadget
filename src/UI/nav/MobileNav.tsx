@@ -229,7 +229,7 @@ const MobileNavContainer = styled(motion.div)`
     position: fixed;
     width: 100%;
     will-change: transform;
-    z-index: 11;
+    z-index: 111;
 `;
 
 const CloseIcon = styled.button`

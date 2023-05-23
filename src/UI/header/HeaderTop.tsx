@@ -211,6 +211,7 @@ const StyledNestedList = styled(StyledUL)`
     padding-inline-start: 0.5rem;
     position: absolute;
     left: -11.8rem;
+    transition: fill ease 0.5s;
     width: 10.5rem;
     ${ListWithIcon}:hover & {
         display: block;

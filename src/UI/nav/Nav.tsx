@@ -128,6 +128,7 @@ const NavBarWrapper = styled.div`
 
 const Categories = styled.div`
     position: relative;
+    z-index: 111;
 `;
 
 const BrowseCategories = styled.div<{ hovered: boolean }>`

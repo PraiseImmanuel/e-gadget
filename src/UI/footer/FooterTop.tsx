@@ -12,17 +12,17 @@ const FooterTop: React.FC = () => {
     return (
         <FooterTopContainer>
             <LogoAndInfoWrapper>
-                <Logo>
+                <div>
                     <LogoImg
                         src={logo}
                         alt="logo"
                         height="29rem"
                         width="130rem"
                     />
-                </Logo>
+                </div>
 
                 <P>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                    Lorem ipsum dolor sit amet, consedcetuer adipiscing elit.
                     Phasellus hendrerit. Pellen tesque aliquet nibh nec urna. In
                     nisi neque, aliquet vel, dapibus id.
                 </P>
@@ -91,8 +91,6 @@ const FooterTopContainer = styled.div`
 const LogoAndInfoWrapper = styled.div`
     margin-bottom: 2rem;
 `;
-
-const Logo = styled.div``;
 
 const LogoImg = styled.img``;
 

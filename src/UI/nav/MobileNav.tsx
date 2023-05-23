@@ -48,8 +48,8 @@ export const MobileNav: React.FC = () => {
                         initial={{ translateX: "0" }}
                         animate={{ translateX: "28rem" }}
                         transition={{
-                            ease: "easeIn",
-                            duration: 0.4,
+                            ease: "linear",
+                            duration: 0.6,
                         }}
                         exit={{ translateX: "0" }}
                     >

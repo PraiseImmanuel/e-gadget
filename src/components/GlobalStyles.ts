@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;line-height: 1.86;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.25s ease-in-out;
     overflow-x:hidden;
   }
 
@@ -20,6 +20,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: transparent;
     border: none;
     color: inherit;
+    cursor:pointer;
     font: inherit;
     text-transform: inherit;
 

@@ -2,17 +2,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { MaxWidthContainer } from "../components/MaxWidthContainer";
+
 import { useAppSelector } from "../store/store";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
 import { HeaderBottomContainer } from "./header/HeaderBottom";
 import Nav from "./nav/Nav";
+import IntroSection from "./Intro/IntroSection";
+import ProductsWrapper from "./products/ProductsWrapper";
 
 const PageWrapper: React.FC = () => {
     const [showNav, setShowNav] = useState(false);
     const showFixedNav: () => void = () => {
-        //eslint-disable-next-line
-        console.log("here");
         document.body.scrollTop > 225 ||
         document.documentElement.scrollTop > 225
             ? setShowNav(true)
@@ -65,7 +66,10 @@ const PageWrapper: React.FC = () => {
             <AnimatedPageWrapper menu={isMenuClosed}>
                 <Header />
                 <Nav />
-                <MainWrapper></MainWrapper>
+                <MainWrapper>
+                    <IntroSection />
+                    <ProductsWrapper />
+                </MainWrapper>
                 <Footer />
             </AnimatedPageWrapper>
             <ScrollToTop></ScrollToTop>
@@ -107,8 +111,8 @@ const AnimatedPageWrapper = styled.div<{ menu: boolean }>`
 `;
 
 const MainWrapper = styled.div`
-    padding-top: 19.4rem;
-    min-height: 50vh;
+    padding-top: 3rem;
+    min-height: 60vh;
 `;
 
 const ScrollToTop = styled.button``;

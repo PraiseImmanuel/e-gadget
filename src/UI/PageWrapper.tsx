@@ -9,7 +9,7 @@ import Header from "./header/Header";
 import { HeaderBottomContainer } from "./header/HeaderBottom";
 import Nav from "./nav/Nav";
 import IntroSection from "./Intro/IntroSection";
-import ProductsWrapper from "./products/ProductsWrapper";
+import ProductSection from "./products/ProductSection";
 
 const PageWrapper: React.FC = () => {
     const [showNav, setShowNav] = useState(false);
@@ -68,7 +68,7 @@ const PageWrapper: React.FC = () => {
                 <Nav />
                 <MainWrapper>
                     <IntroSection />
-                    <ProductsWrapper />
+                    <ProductSection />
                 </MainWrapper>
                 <Footer />
             </AnimatedPageWrapper>

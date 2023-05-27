@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
 */
   body {
     box-sizing: border-box;
+    color: #333;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;line-height: 1.86;
     transition: all 0.25s ease-in-out;

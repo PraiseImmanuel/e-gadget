@@ -17,7 +17,14 @@ interface Props {
 }
 
 const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
-    const [numberOfPanButtons, setNumberOfPanButtons] = useState(0);
+    const [numberOfPanButtons, setNumberOfPanButtons] = useState<number>(0);
+    const [translateValue, setTranslateValue] = useState<string>("0px");
+    const [active, setActive] = useState<boolean>(false);
+
+    const panProductsStyle = {
+        transform: `translateX(${translateValue})`,
+        transition: "transform 2s ease",
+    };
 
     const arrOfNumbers: (num: number) => number[] = (num) => {
         let generatedArr: number[] = [];
@@ -25,6 +32,17 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
             generatedArr = [...generatedArr, i];
         }
         return generatedArr;
+    };
+
+    const panProducts: (val: number) => void = (val) => {
+        if (window.innerWidth > 1280) {
+            setTranslateValue(`-${val * 1200}px`);
+        } else if (window.innerWidth > 990) {
+            setTranslateValue(`-${val * (window.innerWidth * 0.965)}px`);
+        } else {
+            setTranslateValue(`-${val * (window.innerWidth * 0.935)}px`);
+        }
+        setActive(true);
     };
 
     useEffect(() => {
@@ -62,7 +80,7 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
     return (
         <FullProductWrapper>
             <OverflowWrapper>
-                <ProductsContainer>
+                <ProductsContainer style={panProductsStyle}>
                     {products?.map((product) => (
                         <Product key={product.id}>
                             <ProductImage>
@@ -92,8 +110,17 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
 
                 <MobileControls>
                     {arrOfNumbers(numberOfPanButtons).map((item) => (
-                        <button key={item}>
-                            <MobileControlButton active={true} />
+                        <button
+                            key={item}
+                            onClick={() =>
+                                panProducts(
+                                    arrOfNumbers(numberOfPanButtons).indexOf(
+                                        item
+                                    )
+                                )
+                            }
+                        >
+                            <MobileControlButton active={active} />
                         </button>
                     ))}
                 </MobileControls>
@@ -116,7 +143,6 @@ const ProductsContainer = styled.div`
     display: flex;
     flex-direction: row;
     column-gap: 1.5rem;
-    /* transform: translateX(-500px); */
     transition: all 0.4s ease;
 `;
 

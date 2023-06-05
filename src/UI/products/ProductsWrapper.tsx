@@ -19,7 +19,7 @@ interface Props {
 const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
     const [numberOfPanButtons, setNumberOfPanButtons] = useState<number>(0);
     const [translateValue, setTranslateValue] = useState<string>("0px");
-    const [active, setActive] = useState<boolean>(false);
+    const [activeButton, setActiveButton] = useState<number>(0);
 
     const panProductsStyle = {
         transform: `translateX(${translateValue})`,
@@ -34,22 +34,37 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
         return generatedArr;
     };
 
+    const numberOfProducts = products.length;
+    const productsContainerWidth =
+        numberOfProducts * 220 + (16 * numberOfProducts - 1);
+
     const panProducts: (val: number) => void = (val) => {
+        setActiveButton(val);
+        val === 0 ? (val = 0) : (val = val + 1);
+
         if (window.innerWidth > 1280) {
-            setTranslateValue(`-${val * 1200}px`);
+            const translateValue = +(
+                (productsContainerWidth - 1200) /
+                numberOfPanButtons
+            ).toFixed(3);
+            setTranslateValue(`-${val * translateValue}px`);
         } else if (window.innerWidth > 990) {
-            setTranslateValue(`-${val * (window.innerWidth * 0.965)}px`);
+            const translateValue = +(
+                (productsContainerWidth - window.innerWidth * 0.965) /
+                numberOfPanButtons
+            ).toFixed(3);
+            setTranslateValue(`-${val * translateValue}px`);
         } else {
-            setTranslateValue(`-${val * (window.innerWidth * 0.935)}px`);
+            const translateValue = +(
+                (productsContainerWidth - window.innerWidth * 0.935) /
+                numberOfPanButtons
+            ).toFixed(3);
+            setTranslateValue(`-${val * translateValue}px`);
         }
-        setActive(true);
     };
 
     useEffect(() => {
         const createPanButtons: () => void = () => {
-            const numberOfProducts = products.length;
-            const productsContainerWidth = numberOfProducts * 220;
-
             if (window.innerWidth > 1280) {
                 const numberOfButtons = Math.ceil(
                     productsContainerWidth / 1200
@@ -75,7 +90,7 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
         return () => {
             window.removeEventListener("resize", createPanButtons);
         };
-    }, [numberOfPanButtons, products.length]);
+    }, [numberOfPanButtons, productsContainerWidth]);
 
     return (
         <FullProductWrapper>
@@ -120,7 +135,9 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
                                 )
                             }
                         >
-                            <MobileControlButton active={active} />
+                            <MobileControlButton
+                                active={item === activeButton}
+                            />
                         </button>
                     ))}
                 </MobileControls>

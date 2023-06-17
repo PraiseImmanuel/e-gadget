@@ -8,8 +8,13 @@ import Footer from "./footer/Footer";
 import Header from "./header/Header";
 import { HeaderBottomContainer } from "./header/HeaderBottom";
 import Nav from "./nav/Nav";
-import IntroSection from "./Intro/IntroSection";
-import ProductSection from "./products/ProductSection";
+import IntroSection from "./home/Intro/IntroSection";
+import ProductSection from "./home/products/ProductSection";
+import PageAd from "./home/pageAd/PageAD";
+import DealsAndOutlet from "./home/deals/DealsAndOutlet";
+import Brands from "./home/brands/Brands";
+import TrendingProducts from "./home/trendingProducts/TrendingProducts";
+import TopSellingProducts from "./home/topselling/TopSellingProducts";
 
 const PageWrapper: React.FC = () => {
     const [showNav, setShowNav] = useState(false);
@@ -69,6 +74,11 @@ const PageWrapper: React.FC = () => {
                 <MainWrapper>
                     <IntroSection />
                     <ProductSection />
+                    <PageAd />
+                    <DealsAndOutlet />
+                    <Brands />
+                    <TrendingProducts />
+                    <TopSellingProducts />
                 </MainWrapper>
                 <Footer />
             </AnimatedPageWrapper>

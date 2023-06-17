@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import { MaxWidthContainer } from "../../components/MaxWidthContainer";
+import { MaxWidthContainer } from "../../../components/MaxWidthContainer";
 import ProductsWrapper from "./ProductsWrapper";
 
 import { Products } from "./products";
@@ -17,10 +17,21 @@ interface IProduct {
     reviews: string[];
 }
 
+interface IProductDeals {
+    id: number;
+    image: string;
+    category: string;
+    name: string;
+    price: string;
+    old_price: string;
+    stars: number;
+    reviews: string[];
+}
+
 const ProductSection: React.FC = () => {
-    const [productCategory, setProductCategory] = useState<IProduct[]>(
-        Products?.featured
-    );
+    const [productCategory, setProductCategory] = useState<
+        IProduct[] | IProductDeals[]
+    >(Products?.featured);
 
     const [key, setKey] = useState(1);
 

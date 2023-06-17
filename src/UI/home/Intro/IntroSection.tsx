@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Slideshow from "./SlideShow";
 import IntroBanners from "./IntroBanners";
-import { MaxWidthContainer } from "../../components/MaxWidthContainer";
+import { MaxWidthContainer } from "../../../components/MaxWidthContainer";
 
 const IntroSection: React.FC = () => {
     return (

@@ -1,7 +1,7 @@
-import slideOne from "../../images/slide-1.jpg";
-import slideOneSm from "../../images/slide-1-sm.jpg";
-import slideTwo from "../../images/slide-2.jpg";
-import slideTwoSm from "../../images/slide-2-sm.jpg";
+import slideOne from "../../../images/slide-1.jpg";
+import slideOneSm from "../../../images/slide-1-sm.jpg";
+import slideTwo from "../../../images/slide-2.jpg";
+import slideTwoSm from "../../../images/slide-2-sm.jpg";
 
 interface Slide {
     id: number;

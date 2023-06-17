@@ -1,4 +1,4 @@
-import banner_1 from "../../images/banner-1.jpg";
+import banner_1 from "../../../images/banner-1.jpg";
 
 interface Banner {
     id: number;

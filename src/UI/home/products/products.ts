@@ -1,6 +1,6 @@
-import product_five from "../../images/product-5.jpg";
-import product_two from "../../images/product-7.jpg";
-import product_four from "../../images/product-13.jpg";
+import product_five from "../../../images/product-5.jpg";
+import product_two from "../../../images/product-7.jpg";
+import product_four from "../../../images/product-13.jpg";
 
 interface IProduct {
     id: number;
@@ -12,9 +12,20 @@ interface IProduct {
     reviews: string[];
 }
 
+interface IProductDeals {
+    id: number;
+    image: string;
+    category: string;
+    name: string;
+    price: string;
+    old_price: string;
+    stars: number;
+    reviews: string[];
+}
+
 interface IProducts {
     featured: IProduct[];
-    promo_deals: IProduct[];
+    promo_deals: IProductDeals[];
     gift_ideas: IProduct[];
 }
 
@@ -132,6 +143,7 @@ export const Products: IProducts = {
             category: "Digital Camera",
             name: "Sony - Alpha a5100 Mirrorless Camera",
             price: "$499.99",
+            old_price: "$351.99",
             stars: 3,
             reviews: [
                 " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
@@ -145,6 +157,7 @@ export const Products: IProducts = {
             category: "Digital Camera",
             name: "Sony - Alpha a5100 Mirrorless Camera",
             price: "$499.99",
+            old_price: "$351.99",
             stars: 3,
             reviews: [
                 " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
@@ -158,6 +171,7 @@ export const Products: IProducts = {
             category: "Digital Camera",
             name: "Sony - Alpha a5100 Mirrorless Camera",
             price: "$499.99",
+            old_price: "$351.99",
             stars: 3,
             reviews: [
                 " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
@@ -171,6 +185,7 @@ export const Products: IProducts = {
             category: "Digital Camera",
             name: "Sony - Alpha a5100 Mirrorless Camera",
             price: "$499.99",
+            old_price: "$351.99",
             stars: 3,
             reviews: [
                 " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
@@ -184,6 +199,7 @@ export const Products: IProducts = {
             category: "Digital Camera",
             name: "Sony - Alpha a5100 Mirrorless Camera",
             price: "$499.99",
+            old_price: "$351.99",
             stars: 3,
             reviews: [
                 " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
@@ -197,6 +213,7 @@ export const Products: IProducts = {
             category: "Digital Camera",
             name: "Sony - Alpha a5100 Mirrorless Camera",
             price: "$499.99",
+            old_price: "$351.99",
             stars: 3,
             reviews: [
                 " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",

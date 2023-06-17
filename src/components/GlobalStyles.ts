@@ -41,7 +41,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
 
-  h3{
+  h2,h3,h4{
     margin-block-start: 0;
     margin-block-end: 0;
   }

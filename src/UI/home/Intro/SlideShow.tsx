@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import { NewSlides } from "./slides";
-import slideOne from "../../images/slide-1.jpg";
-import slideOneSm from "../../images/slide-1-sm.jpg";
+import slideOne from "../../../images/slide-1.jpg";
+import slideOneSm from "../../../images/slide-1-sm.jpg";
 
 const slides = NewSlides.slides;
 const variants = {

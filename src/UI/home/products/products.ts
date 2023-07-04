@@ -276,3 +276,328 @@ export const Products: IProducts = {
         // },
     ],
 };
+
+interface ITProducts {
+    all: IProduct[];
+    household: IProduct[];
+    computers: IProduct[];
+    phones: IProduct[];
+    gaming: IProduct[];
+    watches: IProduct[];
+}
+
+export const TProductsArr: ITProducts = {
+    all: [
+        {
+            id: 0,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 7,
+            image: product_four,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 4,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 6,
+            image: product_two,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+    ],
+    household: [
+        {
+            id: 0,
+            image: product_two,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 7,
+            image: product_four,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 3,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 4,
+            image: product_four,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 2,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+    ],
+    computers: [
+        {
+            id: 0,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 7,
+            image: product_four,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 1,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 9,
+            image: product_two,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+    ],
+
+    phones: [
+        {
+            id: 0,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 7,
+            image: product_four,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 3,
+            image: product_two,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+    ],
+    gaming: [
+        {
+            id: 0,
+            image: product_two,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 7,
+            image: product_four,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 5,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 6,
+            image: product_four,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 1,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+    ],
+    watches: [
+        {
+            id: 0,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 7,
+            image: product_four,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 9,
+            image: product_five,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+        {
+            id: 6,
+            image: product_two,
+            category: "Digital Camera",
+            name: "Sony - Alpha a5100 Mirrorless Camera",
+            price: "$499.99",
+            stars: 3,
+            reviews: [
+                " Lipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!",
+                "Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!",
+            ],
+        },
+    ],
+};

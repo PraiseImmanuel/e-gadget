@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { NewSlides } from "./slides";
 import slideOne from "../../../images/slide-1.jpg";
@@ -8,9 +8,8 @@ import slideOneSm from "../../../images/slide-1-sm.jpg";
 
 const slides = NewSlides.slides;
 const variants = {
-    initial: {
-        x: "20rem",
-        // opacity: 0,
+    initial: (direction: number) => {
+        return { x: direction > 0 ? "15rem" : "-15rem" };
     },
 
     animate: {
@@ -18,24 +17,29 @@ const variants = {
         opacity: 1,
     },
 
-    exit: {
-        x: "-20rem",
-        opacity: 0,
+    exit: (direction: number) => {
+        return {
+            x: direction > 0 ? "-15rem" : "15rem",
+            opacity: 0,
+        };
     },
 };
 
 const Slideshow: React.FC = () => {
     // Current slide state
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [currentSlide, setCurrentSlide] = useState<number>(0);
+    const [direction, setDirection] = useState<number>(0);
 
     // Controls for changing slides
     const goToPrevSlide: () => void = () => {
+        setDirection(-1);
         currentSlide === 0
             ? setCurrentSlide(slides.length - 1)
             : setCurrentSlide(currentSlide - 1);
     };
 
     const goToNextSlide: () => void = () => {
+        setDirection(1);
         currentSlide === slides.length - 1
             ? setCurrentSlide(0)
             : setCurrentSlide(currentSlide + 1);
@@ -47,101 +51,112 @@ const Slideshow: React.FC = () => {
     };
 
     return (
-        <SlideshowContainer>
-            <Slide
-                variants={variants}
-                animate="animate"
-                initial="initial"
-                exit="exit"
-                key={slides[currentSlide].id}
-            >
-                <BackgroundImage>
-                    <Picture>
-                        <source media="(min-width:480px)" srcSet={slideOne} />
-                        <Img src={slideOneSm} alt="slide" />
-                    </Picture>
-                </BackgroundImage>
-                <SlideContent>
-                    <OfferType>{slides[currentSlide].offerType}</OfferType>
-                    <ProductName>
-                        {slides[currentSlide].productName}
-                    </ProductName>
-                    <Price>
-                        <OfferSupText>
-                            {slides[currentSlide].offerSupText}
-                        </OfferSupText>
-                        <OfferSupPrice>
-                            {slides[currentSlide].offerSupPrice}
-                        </OfferSupPrice>
+        <AnimatePresence initial={false} custom={direction}>
+            <SlideshowContainer>
+                <Slide
+                    variants={variants}
+                    animate="animate"
+                    initial="initial"
+                    exit="exit"
+                    key={slides[currentSlide].id}
+                    custom={direction}
+                >
+                    <BackgroundImage>
+                        <Picture>
+                            <source
+                                media="(min-width:480px)"
+                                srcSet={slideOne}
+                            />
+                            <Img src={slideOneSm} alt="slide" />
+                        </Picture>
+                    </BackgroundImage>
+                    <SlideContent>
+                        <OfferType>{slides[currentSlide].offerType}</OfferType>
+                        <ProductName>
+                            {slides[currentSlide].productName}
+                        </ProductName>
+                        <Price>
+                            <OfferSupText>
+                                {slides[currentSlide].offerSupText}
+                            </OfferSupText>
+                            <OfferSupPrice>
+                                {slides[currentSlide].offerSupPrice}
+                            </OfferSupPrice>
 
-                        <PriceSpan>
-                            {slides[currentSlide].price}
-                            <PriceSup>{slides[currentSlide].priceSup}</PriceSup>
-                        </PriceSpan>
-                    </Price>
+                            <PriceSpan>
+                                {slides[currentSlide].price}
+                                <PriceSup>
+                                    {slides[currentSlide].priceSup}
+                                </PriceSup>
+                            </PriceSpan>
+                        </Price>
 
-                    <Button>
-                        Click Here
-                        <Click
-                            height="1rem"
-                            width="1rem"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"
+                        <Button>
+                            Click Here
+                            <Click
+                                height="1rem"
+                                width="1rem"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                            >
+                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
+                            </Click>
+                        </Button>
+                    </SlideContent>
+
+                    <SlideImage>
+                        <Picture>
+                            <source
+                                media="(min-width:480px)"
+                                srcSet={slides[currentSlide].images[0]}
+                            />
+                            <Img
+                                src={slides[currentSlide].images[1]}
+                                alt="slide"
+                            />
+                        </Picture>
+                    </SlideImage>
+                </Slide>
+
+                {/* Controls */}
+                <Prev
+                    role="button"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"
+                    height="1.85rem"
+                    width="1.85rem"
+                    onClick={() => goToPrevSlide()}
+                >
+                    <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </Prev>
+
+                <Next
+                    role="button"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"
+                    height="1.85rem"
+                    width="1.85rem"
+                    onClick={() => goToNextSlide()}
+                >
+                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                </Next>
+
+                {/* Mobile Controls */}
+
+                <MobileControls>
+                    {slides.map((slide) => (
+                        <button
+                            key={slide.id}
+                            onClick={() => changeSlide(slide.id)}
                         >
-                            <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
-                        </Click>
-                    </Button>
-                </SlideContent>
-
-                <SlideImage>
-                    <Picture>
-                        <source
-                            media="(min-width:480px)"
-                            srcSet={slides[currentSlide].images[0]}
-                        />
-                        <Img src={slides[currentSlide].images[1]} alt="slide" />
-                    </Picture>
-                </SlideImage>
-            </Slide>
-
-            {/* Controls */}
-            <Prev
-                role="button"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
-                height="1.85rem"
-                width="1.85rem"
-                onClick={() => goToPrevSlide()}
-            >
-                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-            </Prev>
-
-            <Next
-                role="button"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
-                height="1.85rem"
-                width="1.85rem"
-                onClick={() => goToNextSlide()}
-            >
-                <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-            </Next>
-
-            {/* Mobile Controls */}
-
-            <MobileControls>
-                {slides.map((slide) => (
-                    <button
-                        key={slide.id}
-                        onClick={() => changeSlide(slide.id)}
-                    >
-                        <MobileControlButton
-                            active={slide.id === currentSlide}
-                        />
-                    </button>
-                ))}
-            </MobileControls>
-        </SlideshowContainer>
+                            <MobileControlButton
+                                active={slide.id === currentSlide}
+                            />
+                        </button>
+                    ))}
+                </MobileControls>
+            </SlideshowContainer>
+        </AnimatePresence>
     );
 };
 
@@ -314,7 +329,7 @@ const Next = styled(arrow)`
 
 const MobileControls = styled.div`
     @media screen and (max-width: 375px) {
-        bottom: 1.5rem;
+        bottom: 2.25rem;
     }
     bottom: 2.52rem;
     display: flex;

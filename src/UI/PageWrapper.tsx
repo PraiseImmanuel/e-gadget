@@ -15,6 +15,8 @@ import DealsAndOutlet from "./home/deals/DealsAndOutlet";
 import Brands from "./home/brands/Brands";
 import TrendingProducts from "./home/trendingProducts/TrendingProducts";
 import TopSellingProducts from "./home/topselling/TopSellingProducts";
+import SocialsAndMail from "./home/socialsAndMail/SocialsAndMail";
+import ServiceOffers from "./home/serviceOffer/ServiceOffers";
 
 const PageWrapper: React.FC = () => {
     const [showNav, setShowNav] = useState(false);
@@ -79,6 +81,8 @@ const PageWrapper: React.FC = () => {
                     <Brands />
                     <TrendingProducts />
                     <TopSellingProducts />
+                    <ServiceOffers />
+                    <SocialsAndMail />
                 </MainWrapper>
                 <Footer />
             </AnimatedPageWrapper>

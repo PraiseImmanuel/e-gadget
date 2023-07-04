@@ -6,32 +6,34 @@ import OtherDeals from "./OtherDeals";
 
 const DealsAndOutlet: React.FC = () => {
     return (
-        <Wrapper>
-            <Heading>
-                <H2>Deals & Outlet</H2>
-                <HeadingP>Today deals and more</HeadingP>
-            </Heading>
+        <section>
+            <Wrapper>
+                <Heading>
+                    <H2>Deals & Outlet</H2>
+                    <HeadingP>Today deals and more</HeadingP>
+                </Heading>
 
-            <MaxWidthContainer>
-                <Content>
-                    <CountDownDeals />
-                    <OtherDeals />
-                </Content>
-            </MaxWidthContainer>
+                <MaxWidthContainer>
+                    <Content>
+                        <CountDownDeals />
+                        <OtherDeals />
+                    </Content>
+                </MaxWidthContainer>
 
-            <Button>
-                Shop More Outlet Deals
-                <SVG
-                    height="1rem"
-                    width="1rem"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    fill="#333"
-                >
-                    <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
-                </SVG>
-            </Button>
-        </Wrapper>
+                <Button>
+                    Shop More Outlet Deals
+                    <SVG
+                        height="1rem"
+                        width="1rem"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                        fill="#333"
+                    >
+                        <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
+                    </SVG>
+                </Button>
+            </Wrapper>
+        </section>
     );
 };
 

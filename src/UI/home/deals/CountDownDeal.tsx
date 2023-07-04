@@ -4,21 +4,14 @@ import styled from "styled-components";
 import appLocalStorage from "../../../localStorage/localStorage";
 import macbook from "../../../images/macbook.jpg";
 
-interface ICountdown {
-    hours: number;
-    minutes: number;
-    seconds: number;
-}
-
+import { ICountdown } from "../../../type/types";
 const { getItem, setItem } = appLocalStorage;
 
 const targetTimeString = (new Date().getTime() + 1000 * 60 * 60 * 3).toString();
 setItem("targetTime", targetTimeString);
-//eslint-disable-next-line
-console.log(getItem("targetTime"), "g");
 
 const CountDownDeals: React.FC = () => {
-    // const [targetTime, setTargetTime] = useState<number>(0);
+    const [targetTime, setTargetTime] = useState<number>(0);
 
     const [countdown, setCountdown] = useState<ICountdown>({
         hours: 0,
@@ -27,15 +20,15 @@ const CountDownDeals: React.FC = () => {
     });
 
     useEffect(() => {
-        // const targetTime = +getItem('targetTime');
-        // setTargetTime(targetTime);
+        const targetTim = getItem("targetTime");
+        setTargetTime(+(targetTim ?? "0"));
         const interval = setInterval(() => {
             const now = new Date().getTime();
 
-            const targetTime = getItem("targetTime");
+            // const targetTime = getItem("targetTime");
 
-            // const distance = +targetTime - now;
-            const distance = new Date().getTime() + 1000 * 60 * 60 * 3 - now;
+            const distance = targetTime - now;
+            // const distance = new Date().getTime() + 1000 * 60 * 60 * 3 - now;
 
             // Calculate , hours, minutes, and seconds
 
@@ -53,13 +46,17 @@ const CountDownDeals: React.FC = () => {
             // Check if the countdown has reached zero
             if (distance < 0) {
                 clearInterval(interval);
-                setCountdown({ hours: 0, minutes: 0, seconds: 0 });
+                const newTargetTimeString = (
+                    new Date().getTime() +
+                    1000 * 60 * 60 * 3
+                ).toString();
+                setItem("targetTime", newTargetTimeString);
             }
         }, 1000);
 
         // Clean up the interval on component unmount
         return () => clearInterval(interval);
-    }, []);
+    }, [targetTime]);
 
     return (
         <Background>

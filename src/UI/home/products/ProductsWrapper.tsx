@@ -1,34 +1,26 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import prevShadow from "../../../images/nav-prev-shadow.png";
-import nextShadow from "../../../images/nav-next-shadow.png";
 import ProductsSlide from "../../../components/ProductsSlide";
-
-interface IProduct {
-    id: number;
-    image: string;
-    category: string;
-    name: string;
-    price: string;
-    stars: number;
-    reviews: string[];
-}
+import { IProduct } from "../../../type/types";
 
 interface Props {
     products: IProduct[];
 }
 
 const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
-    const [numberOfPanButtons, setNumberOfPanButtons] = useState<number>(0);
+    // I had to keep the product slide's translate value
+    // on the parent container
     const [translateValue, setTranslateValue] = useState<string>("0px");
+
+    //State for number of buttons needed to pan the
+    // product slide either right or left
+    const [numberOfPanButtons, setNumberOfPanButtons] = useState<number>(0);
+
+    //for styling buttton when active and vice-versa
     const [activeButton, setActiveButton] = useState<number>(0);
 
-    // const panProductsStyle = {
-    //     transform: `translateX(${translateValue})`,
-    //     transition: "transform 2s ease",
-    // };
-
+    //Creating an array for number of pan buttons
     const arrOfNumbers: (num: number) => number[] = (num) => {
         let generatedArr: number[] = [];
         for (let i = 0; i < num; i++) {
@@ -38,9 +30,12 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
     };
 
     const numberOfProducts = products.length;
+
     const productsContainerWidth =
         numberOfProducts * 220 + (16 * numberOfProducts - 1);
 
+    //Scrolling the product slide to the right or left depending
+    //the responsive MaxWidthContainer
     const panProducts: (val: number) => void = (val) => {
         setActiveButton(val);
         val === 0 ? (val = 0) : (val = val + 1);
@@ -66,6 +61,7 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
         }
     };
 
+    //Creating buttons for scrolling product slide
     useEffect(() => {
         const createPanButtons: () => void = () => {
             if (window.innerWidth > 1280) {
@@ -88,6 +84,8 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
             }
         };
         createPanButtons();
+        //Recreating pan buttons when window is resize
+        //for responsivitiy
         window.addEventListener("resize", createPanButtons);
 
         return () => {
@@ -96,70 +94,31 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
     }, [numberOfPanButtons, productsContainerWidth]);
 
     return (
-        <FullProductWrapper>
-            <OverflowWrapper>
-                <ProductsSlide
-                    products={products}
-                    translateValue={translateValue}
-                />
-                <PanButtons>
-                    {arrOfNumbers(numberOfPanButtons).map((item) => (
-                        <button
-                            key={item}
-                            onClick={() =>
-                                panProducts(
-                                    arrOfNumbers(numberOfPanButtons).indexOf(
-                                        item
-                                    )
-                                )
-                            }
-                        >
-                            <MobileControlButton
-                                active={item === activeButton}
-                            />
-                        </button>
-                    ))}
-                </PanButtons>
-
-                <MoveButtons>
-                    <Prev>
-                        <svg
-                            fill="#fcb941"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 320 512"
-                            height="1.85rem"
-                            width="1.85rem"
-                        >
-                            <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-                        </svg>
-                    </Prev>
-
-                    <Next>
-                        <svg
-                            fill="#fcb941"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 320 512"
-                            height="1.85rem"
-                            width="1.85rem"
-                        >
-                            <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                        </svg>
-                    </Next>
-                </MoveButtons>
-            </OverflowWrapper>
-        </FullProductWrapper>
+        <ProductsSlide
+            products={products}
+            translateValue={translateValue}
+            setTranslateValue={setTranslateValue}
+            addControls={false}
+        >
+            <PanButtons>
+                {arrOfNumbers(numberOfPanButtons).map((item) => (
+                    <button
+                        key={item}
+                        onClick={() =>
+                            panProducts(
+                                arrOfNumbers(numberOfPanButtons).indexOf(item)
+                            )
+                        }
+                    >
+                        <MobileControlButton active={item === activeButton} />
+                    </button>
+                ))}
+            </PanButtons>
+        </ProductsSlide>
     );
 };
 
 export default ProductsWrapper;
-
-const FullProductWrapper = styled.div`
-    position: relative;
-`;
-
-const OverflowWrapper = styled.div`
-    overflow: hidden;
-`;
 
 const PanButtons = styled.div`
     bottom: -5rem;
@@ -178,48 +137,4 @@ const MobileControlButton = styled.span<{ active: boolean }>`
     height: 0.7rem;
     transition: all ease 0.5s;
     width: ${(props) => (props.active ? "1.25rem" : "0.7rem")};
-`;
-
-// Controls
-const MoveButtons = styled.div``;
-
-const Button = styled.button`
-    align-items: center;
-    background: rgba(255, 255, 255, 0.904);
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: all 0.3s ease;
-    width: 3rem;
-    &::before {
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-image: url(${prevShadow});
-        content: "";
-        display: block;
-        height: 100%;
-        position: absolute;
-        left: 100%;
-        top: 0;
-        border-radius: 20px 0 0 20px;
-        width: 1rem;
-    }
-`;
-
-const Prev = styled(Button)`
-    left: 0;
-`;
-
-const Next = styled(Button)`
-    right: 0;
-    &::before {
-        left: auto;
-        right: 100%;
-        background-image: url(${nextShadow});
-    }
 `;

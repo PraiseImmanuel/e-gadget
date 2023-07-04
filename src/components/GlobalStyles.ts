@@ -46,6 +46,20 @@ export const GlobalStyles = createGlobalStyle`
     margin-block-end: 0;
   }
 
+  h1{
+    letter-spacing: -.025em;
+  }
+
+  h2{
+    letter-spacing: -.03em;
+  }
+
+  h3{
+    letter-spacing: -.01em;
+  }
+
+  p{letter-spacing: -.01em;}
+
   p{
     margin-block-start: 0;
     margin-block-end: 0;

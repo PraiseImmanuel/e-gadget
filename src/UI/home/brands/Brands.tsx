@@ -6,15 +6,17 @@ import { brandsImage } from "../../../images/brands/brands";
 
 const Brands: React.FC = () => {
     return (
-        <MaxWidthContainer>
-            <Wrapper>
-                {brandsImage.map((brand) => (
-                    <Brand key={brandsImage.indexOf(brand)}>
-                        <BrandImage src={brand} alt="brand logo" />
-                    </Brand>
-                ))}
-            </Wrapper>
-        </MaxWidthContainer>
+        <section>
+            <MaxWidthContainer>
+                <Wrapper>
+                    {brandsImage.map((brand) => (
+                        <Brand key={brandsImage.indexOf(brand)}>
+                            <BrandImage src={brand} alt="brand logo" />
+                        </Brand>
+                    ))}
+                </Wrapper>
+            </MaxWidthContainer>
+        </section>
     );
 };
 
@@ -28,6 +30,11 @@ const Wrapper = styled.div`
     justify-content: center;
     padding: 5rem 0 2.5rem;
     overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 const Brand = styled.div``;

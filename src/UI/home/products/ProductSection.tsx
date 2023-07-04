@@ -6,33 +6,14 @@ import { MaxWidthContainer } from "../../../components/MaxWidthContainer";
 import ProductsWrapper from "./ProductsWrapper";
 
 import { Products } from "./products";
-
-interface IProduct {
-    id: number;
-    image: string;
-    category: string;
-    name: string;
-    price: string;
-    stars: number;
-    reviews: string[];
-}
-
-interface IProductDeals {
-    id: number;
-    image: string;
-    category: string;
-    name: string;
-    price: string;
-    old_price: string;
-    stars: number;
-    reviews: string[];
-}
+import { IProduct, IProductDeals } from "../../../type/types";
 
 const ProductSection: React.FC = () => {
     const [productCategory, setProductCategory] = useState<
         IProduct[] | IProductDeals[]
     >(Products?.featured);
 
+    // Key for changing category for animation
     const [key, setKey] = useState(1);
 
     const changeCategory: (arg: IProduct[]) => void = (arg) => {

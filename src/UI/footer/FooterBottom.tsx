@@ -40,6 +40,7 @@ const P = styled.p`
     font-size: 1.5rem;
     font-weight: 300;
     margin: 0 auto;
+    margin-bottom: 2rem;
     text-align: center;
     @media screen and (min-width: 920px) {
         margin: 0;

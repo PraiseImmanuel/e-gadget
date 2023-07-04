@@ -69,6 +69,7 @@ const BannerContent = styled.div`
 const OfferType = styled.p`
     color: #777;
     font-size: 1.25rem;
+    font-weight: 300;
     @media screen and (max-width: 989px) and (min-width: 768px) {
         font-size: 1.5rem;
     }
@@ -79,7 +80,7 @@ const OfferType = styled.p`
 `;
 
 const ProductName = styled.p`
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin: -0.8rem 0;
     @media screen and (max-width: 989px) and (min-width: 768px) {
@@ -93,6 +94,7 @@ const ProductName = styled.p`
 
 const OfferDetails = styled.p`
     font-size: 1.6rem;
+    font-weight: 300;
     margin-bottom: -0.4rem;
     @media screen and (max-width: 989px) and (min-width: 768px) {
         font-size: 1.8rem;
@@ -112,7 +114,7 @@ const BannerButton = styled.button`
     &:hover {
         background-color: #fcb941;
         color: #fff;
-        padding: 0.25rem 1.25rem;
+        padding: 0.15rem 1rem;
     }
 
     @media screen and (max-width: 989px) and (min-width: 768px) {

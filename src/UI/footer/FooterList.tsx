@@ -1,15 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface ListItems {
-    text: string;
-    hRef: string;
-}
-
-interface Link {
-    heading: string;
-    listItems: ListItems[];
-}
+import { Link } from "../../type/types";
 
 interface Props {
     link: Link;

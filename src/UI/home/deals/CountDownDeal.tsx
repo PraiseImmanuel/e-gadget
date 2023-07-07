@@ -8,7 +8,9 @@ import { ICountdown } from "../../../type/types";
 const { getItem, setItem } = appLocalStorage;
 
 const targetTimeString = (new Date().getTime() + 1000 * 60 * 60 * 3).toString();
-setItem("targetTime", targetTimeString);
+if (getItem("targetTime") === null) {
+    setItem("targetTime", targetTimeString);
+}
 
 const CountDownDeals: React.FC = () => {
     const [targetTime, setTargetTime] = useState<number>(0);

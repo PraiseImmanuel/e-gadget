@@ -1,8 +1,3 @@
-import slideOne from "../../../images/slide-1.jpg";
-import slideOneSm from "../../../images/slide-1-sm.jpg";
-import slideTwo from "../../../images/slide-2.jpg";
-import slideTwoSm from "../../../images/slide-2-sm.jpg";
-
 interface Slide {
     id: number;
     offerType: string;
@@ -25,20 +20,39 @@ export const NewSlides: Slides = {
             offerType: "Promo Deals",
             productName: "Stereo Bluetooth",
             offerSupText: "",
-            offerSupPrice: `$500`,
-            price: `$345`,
+            offerSupPrice: "24,255",
+            price: "₦15,000",
             priceSup: ".99",
-            images: [slideOne, slideOneSm],
+            images: [
+                "https://res.cloudinary.com/dj25aashz/image/upload/v1689542650/e-gadgets/slide-1_serisj.jpg",
+                "https://res.cloudinary.com/dj25aashz/image/upload/v1689542650/e-gadgets/slide-1-sm_ovw2kr.jpg",
+            ],
         },
         {
             id: 1,
             offerType: "Daily Deals",
-            productName: "MacBook Pro",
+            productName: "Lenovo IDEAPAD",
             offerSupText: `Today`,
             offerSupPrice: "",
-            price: `$5448`,
+            price: "₦95,000",
             priceSup: ".99",
-            images: [slideTwo, slideTwoSm],
+            images: [
+                "https://res.cloudinary.com/dj25aashz/image/upload/v1689542650/e-gadgets/slide-2_rs4clg.jpg",
+                "https://res.cloudinary.com/dj25aashz/image/upload/v1689542650/e-gadgets/slide-2-sm_l1lmya.jpg",
+            ],
+        },
+        {
+            id: 2,
+            offerType: "Featured",
+            productName: "Pressure Pot Cooker",
+            offerSupText: "",
+            offerSupPrice: "",
+            price: `₦18,800`,
+            priceSup: ".99",
+            images: [
+                "https://res.cloudinary.com/dj25aashz/image/upload/v1689542650/e-gadgets/slide-3_fk2ml7.jpg",
+                "https://res.cloudinary.com/dj25aashz/image/upload/v1689542650/e-gadgets/slide-3-sm_hlnjok.jpg",
+            ],
         },
     ],
 };

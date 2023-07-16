@@ -1,36 +1,37 @@
 import React from "react";
 import styled from "styled-components";
+import { SpecialProducts } from "../../../products";
 
-import { Products } from "../products/products";
+const products = SpecialProducts;
 
-const deals = Products.promo_deals;
+const deals = products.promo_deals;
 
 const OtherDeals: React.FC = () => {
     return (
         <Wrapper>
             <div>
-                <Product key={deals[0].id}>
+                <Product key={deals[5].id}>
                     <ProductImage>
-                        <Image src={deals[0].image} />
+                        <Image src={deals[5].image} />
                     </ProductImage>
 
                     <ProductInformation>
                         <h3>
                             <Category href="cst.com">
-                                {deals[0].category}
+                                {deals[5].category}
                             </Category>
                         </h3>
                         <h3>
-                            <Name href="prd.com">{deals[0].name}</Name>
+                            <Name href="prd.com">{deals[5].name}</Name>
                         </h3>
                         <Price>
-                            {deals[0].price}
-                            <OldPrice> Was {deals[1].old_price}</OldPrice>
+                            {deals[5].price}{" "}
+                            <OldPrice> Was {deals[5].old_price}</OldPrice>
                         </Price>
                         <Reviews>
-                            <Stars>{deals[0].stars}</Stars>
+                            <Stars>{deals[5].stars}</Stars>
                             <NumOfReviews>
-                                ({deals[0].reviews.length} reviews)
+                                ({deals[5].reviews.length} reviews)
                             </NumOfReviews>
                         </Reviews>
 
@@ -63,30 +64,29 @@ const OtherDeals: React.FC = () => {
                     </WishList>
                 </Product>
             </div>
-
             <div>
-                <Product key={deals[1].id}>
+                <Product key={deals[0].id}>
                     <ProductImage>
-                        <Image src={deals[1].image} />
+                        <Image src={deals[0].image} />
                     </ProductImage>
 
                     <ProductInformation>
                         <h3>
                             <Category href="cst.com">
-                                {deals[1].category}
+                                {deals[0].category}
                             </Category>
                         </h3>
                         <h3>
-                            <Name href="prd.com">{deals[1].name}</Name>
+                            <Name href="prd.com">{deals[0].name}</Name>
                         </h3>
                         <Price>
-                            {deals[1].price}{" "}
-                            <OldPrice> Was {deals[1].old_price}</OldPrice>
+                            {deals[0].price}
+                            <OldPrice> Was {deals[0].old_price}</OldPrice>
                         </Price>
                         <Reviews>
-                            <Stars>{deals[1].stars}</Stars>
+                            <Stars>{deals[0].stars}</Stars>
                             <NumOfReviews>
-                                ({deals[1].reviews.length} reviews)
+                                ({deals[0].reviews.length} reviews)
                             </NumOfReviews>
                         </Reviews>
 

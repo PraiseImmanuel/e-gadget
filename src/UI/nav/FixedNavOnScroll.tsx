@@ -1,16 +1,12 @@
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { MaxWidthContainer } from "../components/MaxWidthContainer";
+import { AnimatePresence, motion } from "framer-motion";
 
-import { useAppSelector } from "../store/store";
-import Footer from "./footer/Footer";
-import Header from "./header/Header";
-import { HeaderBottomContainer } from "./header/HeaderBottom";
-import Nav from "./nav/Nav";
-import Home from "./home/Home";
+import { MaxWidthContainer } from "../../components/MaxWidthContainer";
+import { HeaderBottomContainer } from "../header/HeaderBottom";
+import Nav from "./Nav";
 
-const PageWrapper: React.FC = () => {
+const FixedNavOnScroll: React.FC = () => {
     const [showNav, setShowNav] = useState(false);
     const showFixedNav: () => void = () => {
         document.body.scrollTop > 225 ||
@@ -19,17 +15,14 @@ const PageWrapper: React.FC = () => {
             : setShowNav(false);
     };
 
-    const isMenuClosed = useAppSelector(
-        (state) => state.toggleMobileMenu.isMenuClosed
-    );
-
     useEffect(() => {
         window.onscroll = () => {
             showFixedNav();
         };
     }, []);
+
     return (
-        <PageWrapperContainer>
+        <React.Fragment>
             <AnimatePresence>
                 {showNav && (
                     <FixedNav
@@ -61,23 +54,11 @@ const PageWrapper: React.FC = () => {
                     </FixedMobileNav>
                 )}
             </AnimatePresence>
-
-            <AnimatedPageWrapper menu={isMenuClosed}>
-                <Header />
-                <Nav />
-                <MainWrapper>
-                    <Home />
-                </MainWrapper>
-                <Footer />
-            </AnimatedPageWrapper>
-            <ScrollToTop></ScrollToTop>
-        </PageWrapperContainer>
+        </React.Fragment>
     );
 };
 
-export default PageWrapper;
-
-const PageWrapperContainer = styled.div``;
+export default FixedNavOnScroll;
 
 const FixedNav = styled(motion.div)`
     background-color: #fff;
@@ -100,17 +81,3 @@ const FixedMobileNav = styled(motion.div)`
         display: none;
     }
 `;
-
-const AnimatedPageWrapper = styled.div<{ menu: boolean }>`
-    min-height: 99.99999vh;
-    transform: ${(props) =>
-        props.menu ? "translateX(0)" : "translateX(20rem)"};
-    transition: transform 0.43s ease-in-out;
-`;
-
-const MainWrapper = styled.div`
-    padding-top: 3rem;
-    min-height: 60vh;
-`;
-
-const ScrollToTop = styled.button``;

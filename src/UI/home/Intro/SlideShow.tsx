@@ -180,7 +180,7 @@ const SlideContent = styled.div`
         max-width: 17rem;
     }
     left: 6vw;
-    max-width: 20rem;
+    max-width: 22rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -191,7 +191,7 @@ const SlideContent = styled.div`
     }
 
     @media screen and (min-width: 1200px) {
-        max-width: 25rem;
+        max-width: 28rem;
     }
 `;
 
@@ -299,6 +299,7 @@ const Click = styled.svg`
 const SlideImage = styled.div`
     position: absolute;
     top: 0;
+    width: 100%;
 `;
 
 const Picture = styled.picture``;

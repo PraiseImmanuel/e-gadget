@@ -5,13 +5,15 @@ import { motion } from "framer-motion";
 import { MaxWidthContainer } from "../../../components/MaxWidthContainer";
 import ProductsWrapper from "./ProductsWrapper";
 
-import { Products } from "./products";
 import { IProduct, IProductDeals } from "../../../type/types";
+import { SpecialProducts } from "../../../products";
+
+const products = SpecialProducts;
 
 const ProductSection: React.FC = () => {
     const [productCategory, setProductCategory] = useState<
         IProduct[] | IProductDeals[]
-    >(Products?.featured);
+    >(products?.featured);
 
     // Key for changing category for animation
     const [key, setKey] = useState(1);
@@ -26,31 +28,31 @@ const ProductSection: React.FC = () => {
             <MaxWidthContainer>
                 <Wrapper>
                     <ProductNav>
-                        <List active={productCategory === Products.featured}>
+                        <List active={productCategory === products.featured}>
                             <NavButton
                                 role="button"
                                 onClick={() =>
-                                    changeCategory(Products.featured)
+                                    changeCategory(products.featured)
                                 }
                             >
                                 Featured
                             </NavButton>
                         </List>
-                        <List active={productCategory === Products.promo_deals}>
+                        <List active={productCategory === products.promo_deals}>
                             <NavButton
                                 role="button"
                                 onClick={() =>
-                                    changeCategory(Products.promo_deals)
+                                    changeCategory(products.promo_deals)
                                 }
                             >
                                 Promo Deals
                             </NavButton>
                         </List>
-                        <List active={productCategory === Products.gift_ideas}>
+                        <List active={productCategory === products.gift_ideas}>
                             <NavButton
                                 role="button"
                                 onClick={() =>
-                                    changeCategory(Products.gift_ideas)
+                                    changeCategory(products.gift_ideas)
                                 }
                             >
                                 Gift Ideas

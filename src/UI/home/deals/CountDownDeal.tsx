@@ -53,6 +53,8 @@ const CountDownDeals: React.FC = () => {
                     1000 * 60 * 60 * 3
                 ).toString();
                 setItem("targetTime", newTargetTimeString);
+                const newTargetTim = getItem("targetTime");
+                setTargetTime(+(newTargetTim ?? "0"));
             }
         }, 1000);
 

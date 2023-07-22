@@ -41,6 +41,7 @@ const IntroBannersContainer = styled.div``;
 
 const Banner = styled.div`
     position: relative;
+    min-height: 11rem;
 `;
 
 const BannerImage = styled.div`

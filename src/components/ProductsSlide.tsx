@@ -265,7 +265,10 @@ const Product = styled.div`
     width: 100%;
 `;
 
-const ProductImage = styled.div``;
+const ProductImage = styled.div`
+    min-height: 20rem;
+    transition: all ease 0.2s;
+`;
 
 const Image = styled.img`
     width: 100%;

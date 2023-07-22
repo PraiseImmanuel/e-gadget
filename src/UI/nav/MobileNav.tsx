@@ -254,6 +254,7 @@ const InputContainer = styled.div<{ focus: boolean }>`
     margin: auto;
     max-width: 24.5rem;
     transition: all 0.4s ease-in;
+    width: 100%;
 `;
 
 const SearchIconContainer = styled.div`

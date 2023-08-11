@@ -13,7 +13,6 @@ interface Props {
 }
 
 const TProducts: React.FC<Props> = ({ heading, products }: Props) => {
-    const [translateValue, setTranslateValue] = useState<string>("0px");
     const [productCategory, setProductCategory] = useState<IProduct[]>(
         products?.all
     );
@@ -22,7 +21,6 @@ const TProducts: React.FC<Props> = ({ heading, products }: Props) => {
     const [key, setKey] = useState(1);
 
     const changeCategory: (arg: IProduct[]) => void = (arg) => {
-        setTranslateValue("0px");
         key === 3 ? setKey(1) : setKey(key + 1);
         setProductCategory(arg);
     };
@@ -132,8 +130,6 @@ const TProducts: React.FC<Props> = ({ heading, products }: Props) => {
                         key={key}
                     >
                         <ProductsSlide
-                            translateValue={translateValue}
-                            setTranslateValue={setTranslateValue}
                             products={productCategory}
                             addControls={true}
                         >

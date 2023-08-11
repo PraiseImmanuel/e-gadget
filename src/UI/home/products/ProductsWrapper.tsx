@@ -94,12 +94,7 @@ const ProductsWrapper: React.FC<Props> = ({ products }: Props) => {
     }, [numberOfPanButtons, productsContainerWidth]);
 
     return (
-        <ProductsSlide
-            products={products}
-            translateValue={translateValue}
-            setTranslateValue={setTranslateValue}
-            addControls={false}
-        >
+        <ProductsSlide products={products} addControls={false}>
             <PanButtons>
                 {arrOfNumbers(numberOfPanButtons).map((item) => (
                     <button

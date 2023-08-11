@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import prevShadow from "../images/nav-prev-shadow.png";
@@ -8,16 +8,12 @@ import { IProduct } from "../type/types";
 
 interface Props {
     products: IProduct[];
-    translateValue: React.SetStateAction<string>;
-    setTranslateValue: React.Dispatch<React.SetStateAction<string>>;
     addControls: boolean;
     children: React.ReactNode;
 }
 
 const ProductsSlide: React.FC<Props> = ({
     products,
-    translateValue,
-    setTranslateValue,
     addControls,
     children,
 }: Props) => {
@@ -30,29 +26,13 @@ const ProductsSlide: React.FC<Props> = ({
     //  scroll of the slide
     const [screenWidth, setScreenWidth] = useState<number>(0);
 
+    //Scrolling states
+    const outerDivRef = useRef<HTMLDivElement>(null);
+    const innerDivRef = useRef<HTMLDivElement>(null);
+
     const numberOfProducts = products.length;
     const productsContainerWidth =
         numberOfProducts * 220 + (16 * numberOfProducts - 1);
-
-    //Chosing when to display or hid the previous and next
-    //button when neccessary
-    useEffect(() => {
-        const translateVal = +translateValue
-            .toString()
-            .slice(0, translateValue.length - 2);
-
-        if (translateVal < 0) {
-            setDisplayPrev(true);
-        } else {
-            setDisplayPrev(false);
-        }
-
-        if (productsContainerWidth < screenWidth) {
-            setDisplayNext(false);
-        } else {
-            setDisplayNext(true);
-        }
-    }, [translateValue, productsContainerWidth, screenWidth]);
 
     //get the screen width for device for responsive
     //scrolling of the product slide
@@ -67,6 +47,7 @@ const ProductsSlide: React.FC<Props> = ({
             }
         };
         getScreenWidth();
+
         window.addEventListener("resize", getScreenWidth);
         return () => {
             window.removeEventListener("resize", getScreenWidth);
@@ -74,78 +55,21 @@ const ProductsSlide: React.FC<Props> = ({
     }, [screenWidth]);
 
     const nextButton: () => void = () => {
-        const translateVal = +translateValue
-            .toString()
-            .slice(0, translateValue.length - 2);
-
-        if (
-            +translateVal.toString().slice(1, translateValue.length) +
-                screenWidth +
-                220 >
-                productsContainerWidth &&
-            translateValue === "0px"
-        ) {
-            const newTranslateVal =
-                screenWidth +
-                +translateVal.toString().slice(1, translateValue.length) -
-                productsContainerWidth +
-                +translateVal.toString().slice(1, translateValue.length);
-
-            translateVal.toString().slice(0, 1) === "-"
-                ? setTranslateValue("-" + newTranslateVal + "px")
-                : setTranslateValue(newTranslateVal + "px");
-
-            setDisplayNext(false);
-        } else if (
-            +translateVal.toString().slice(1, translateValue.length) +
-                screenWidth +
-                220 >
-                productsContainerWidth &&
-            translateValue !== "0px"
-        ) {
-            const newTranslateVal =
-                screenWidth +
-                +translateVal.toString().slice(1, translateValue.length) -
-                productsContainerWidth +
-                translateVal;
-
-            setTranslateValue(newTranslateVal + "px");
-
-            setDisplayNext(false);
-        } else {
-            const translateVal =
-                +translateValue.toString().slice(0, translateValue.length - 2) -
-                220;
-            setTranslateValue(translateVal + "px");
+        if (outerDivRef.current) {
+            outerDivRef.current.scrollLeft += 100;
         }
     };
 
     const prevButton: () => void = () => {
-        const translateVal =
-            +translateValue.toString().slice(0, translateValue.length - 2) +
-            220;
-
-        setTranslateValue(translateVal + "px");
-        if (+translateVal === 0) {
-            setTranslateValue(translateVal + "px");
-            setDisplayPrev(false);
+        if (outerDivRef.current) {
+            outerDivRef.current.scrollLeft -= 100;
         }
-
-        if (+translateVal > 0) {
-            setTranslateValue("0px");
-            setDisplayPrev(false);
-        }
-    };
-
-    const panProductsStyle = {
-        transform: `translateX(${translateValue})`,
-        transition: "transform 2s ease",
     };
 
     return (
         <FullProductWrapper>
-            <OverflowWrapper>
-                <ProductsContainer style={panProductsStyle}>
+            <OverflowWrapper ref={outerDivRef}>
+                <ProductsContainer ref={innerDivRef}>
                     {products?.map((product) => (
                         <Product key={product.id}>
                             <ProductImage>
@@ -245,7 +169,7 @@ const FullProductWrapper = styled.div`
 `;
 
 const OverflowWrapper = styled.div`
-    overflow: hidden;
+    overflow-x: scroll;
 `;
 
 const ProductsContainer = styled.div`

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 import prevShadow from "../images/nav-prev-shadow.png";
@@ -8,68 +8,45 @@ import { IProduct } from "../type/types";
 
 interface Props {
     products: IProduct[];
-    addControls: boolean;
-    children: React.ReactNode;
 }
 
-const ProductsSlide: React.FC<Props> = ({
-    products,
-    addControls,
-    children,
-}: Props) => {
+const ProductsSlide: React.FC<Props> = ({ products }: Props) => {
     // State for showing or hiding the next and previous
     // button of the slide
     const [displayNext, setDisplayNext] = useState<boolean>(true);
     const [displayPrev, setDisplayPrev] = useState<boolean>(false);
 
-    // State for keeping the screenwidth for responsive
-    //  scroll of the slide
-    const [screenWidth, setScreenWidth] = useState<number>(0);
-
-    //Scrolling states
+    //Scrolling Container ref
     const outerDivRef = useRef<HTMLDivElement>(null);
-    const innerDivRef = useRef<HTMLDivElement>(null);
 
-    const numberOfProducts = products.length;
-    const productsContainerWidth =
-        numberOfProducts * 220 + (16 * numberOfProducts - 1);
-
-    //get the screen width for device for responsive
-    //scrolling of the product slide
-    useEffect(() => {
-        const getScreenWidth: () => void = () => {
-            if (window.innerWidth > 1280) {
-                setScreenWidth(1200);
-            } else if (window.innerWidth > 990) {
-                setScreenWidth(window.innerWidth * 0.965);
-            } else {
-                setScreenWidth(window.innerWidth * 0.935);
-            }
-        };
-        getScreenWidth();
-
-        window.addEventListener("resize", getScreenWidth);
-        return () => {
-            window.removeEventListener("resize", getScreenWidth);
-        };
-    }, [screenWidth]);
-
-    const nextButton: () => void = () => {
+    const handleScrollTo = (scrollOffset: number) => {
         if (outerDivRef.current) {
-            outerDivRef.current.scrollLeft += 100;
+            outerDivRef.current.scrollTo({
+                left: outerDivRef.current.scrollLeft + scrollOffset,
+                behavior: "smooth", // Use smooth scrolling behavior
+            });
         }
     };
 
-    const prevButton: () => void = () => {
+    const handleScroll = () => {
         if (outerDivRef.current) {
-            outerDivRef.current.scrollLeft -= 100;
+            const maxScrollLeft =
+                outerDivRef.current.scrollWidth -
+                outerDivRef.current.clientWidth;
+            outerDivRef.current?.scrollLeft >= maxScrollLeft - 10
+                ? setDisplayNext(false)
+                : setDisplayNext(true);
         }
+
+        (outerDivRef.current?.scrollLeft || -1) >= 0
+            ? setDisplayPrev(true)
+            : setDisplayPrev(false);
     };
 
     return (
         <FullProductWrapper>
-            <OverflowWrapper ref={outerDivRef}>
-                <ProductsContainer ref={innerDivRef}>
+            <OverflowWrapper ref={outerDivRef} onScroll={handleScroll}>
+                <ProductsContainer>
                     {products?.map((product) => (
                         <Product key={product.id}>
                             <ProductImage>
@@ -124,12 +101,10 @@ const ProductsSlide: React.FC<Props> = ({
                     ))}
                 </ProductsContainer>
 
-                {children}
-
-                <MoveButtons addControls={addControls}>
+                <MoveButtons>
                     <Prev
                         displayStyle={displayPrev}
-                        onClick={() => prevButton()}
+                        onClick={() => handleScrollTo(-220)}
                     >
                         <svg
                             fill="#fcb941"
@@ -144,7 +119,7 @@ const ProductsSlide: React.FC<Props> = ({
 
                     <Next
                         displayStyle={displayNext}
-                        onClick={() => nextButton()}
+                        onClick={() => handleScrollTo(220)}
                     >
                         <svg
                             fill="#fcb941"
@@ -325,8 +300,8 @@ const Cart = styled.div`
 `;
 
 // Controls
-const MoveButtons = styled.div<{ addControls: boolean }>`
-    display: ${(props) => (props.addControls ? "block" : "none")};
+const MoveButtons = styled.div`
+    display: block;
 `;
 
 const Button = styled.button`

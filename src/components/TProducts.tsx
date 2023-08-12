@@ -129,12 +129,7 @@ const TProducts: React.FC<Props> = ({ heading, products }: Props) => {
                         exit={{ opacity: 0 }}
                         key={key}
                     >
-                        <ProductsSlide
-                            products={productCategory}
-                            addControls={true}
-                        >
-                            <React.Fragment />
-                        </ProductsSlide>
+                        <ProductsSlide products={productCategory} />
                     </AnimatedContainer>
                 </Wrapper>
             </MaxWidthContainer>

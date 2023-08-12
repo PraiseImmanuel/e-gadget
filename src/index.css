@@ -364,3 +364,7 @@ body {
 ul {
     padding-inline-start: 0;
 }
+
+html {
+    scroll-behavior: smooth;
+}

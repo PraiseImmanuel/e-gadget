@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -9,7 +9,7 @@ import slideOneSm from "../../../images/slide-1-sm.jpg";
 const slides = NewSlides.slides;
 const variants = {
     initial: (direction: number) => {
-        return { x: direction > 0 ? "15rem" : "-15rem" };
+        return { x: direction > 0 ? "25rem" : "-25rem" };
     },
 
     animate: {
@@ -19,7 +19,7 @@ const variants = {
 
     exit: (direction: number) => {
         return {
-            x: direction > 0 ? "-15rem" : "15rem",
+            x: direction > 0 ? "-25rem" : "25rem",
             opacity: 0,
         };
     },
@@ -49,6 +49,21 @@ const Slideshow: React.FC = () => {
     const changeSlide: (val: number) => void = (val) => {
         setCurrentSlide(val);
     };
+
+    useEffect(() => {
+        //constantly change slide
+        const nextSlide = () => {
+            setDirection(-1);
+            setCurrentSlide((currentSlide + 1) % slides.length);
+        };
+
+        const timer = setInterval(() => {
+            nextSlide();
+        }, 5000);
+        return () => {
+            clearInterval(timer);
+        };
+    }, [currentSlide]);
 
     return (
         <AnimatePresence initial={false} custom={direction}>

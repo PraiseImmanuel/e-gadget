@@ -81,21 +81,11 @@ const Nav: React.FC = () => {
 
                     <NavMenu>
                         <MenuItems>
-                            <MenuItem>
-                                <a href="s.com"> Home </a>
-                            </MenuItem>
-                            <MenuItem>
-                                <a href="s.com"> Shop </a>
-                            </MenuItem>
-                            <MenuItem>
-                                <a href="s.com">Product</a>
-                            </MenuItem>
-                            <MenuItem>
-                                <a href="s.com"> About </a>
-                            </MenuItem>
-                            <MenuItem>
-                                <a href="s.com"> Blog </a>
-                            </MenuItem>
+                            <MenuItem>Home</MenuItem>
+                            <MenuItem>Shop</MenuItem>
+                            <MenuItem>Product</MenuItem>
+                            <MenuItem>About</MenuItem>
+                            <MenuItem>Blog</MenuItem>
                         </MenuItems>
                     </NavMenu>
 

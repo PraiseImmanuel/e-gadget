@@ -17,33 +17,66 @@ export const NewLinks: Links = {
         {
             heading: "Useful Links",
             listItems: [
-                { text: "About e-gadgets", hRef: "about.com" },
-                { text: "Our Services", hRef: "about.com" },
-                { text: "How to shop", hRef: "about.com" },
-                { text: "FAQ", hRef: "about.com" },
-                { text: "Contact Us", hRef: "about.com" },
+                {
+                    text: "About e-gadgets",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                {
+                    text: "Our Services",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                {
+                    text: "How to shop",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                { text: "FAQ", hRef: "https://github.com/PraiseImmanuel" },
+                {
+                    text: "Contact Us",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
             ],
         },
 
         {
             heading: "Customer Service",
             listItems: [
-                { text: "Payment Methods", hRef: "ser.com" },
-                { text: "Money-back guarantee!", hRef: "ser.com" },
-                { text: "Returns", hRef: "ser.com" },
-                { text: "Shipping", hRef: "ser.com" },
-                { text: "Terms and conditions", hRef: "ser.com" },
-                { text: "Privacy Policy", hRef: "ser.com" },
+                {
+                    text: "Payment Methods",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                {
+                    text: "Money-back guarantee!",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                { text: "Returns", hRef: "https://github.com/PraiseImmanuel" },
+                { text: "Shipping", hRef: "https://github.com/PraiseImmanuel" },
+                {
+                    text: "Terms and conditions",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                {
+                    text: "Privacy Policy",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
             ],
         },
         {
             heading: "My Account",
             listItems: [
-                { text: "Sign In", hRef: "ser.com" },
-                { text: "View Cart", hRef: "ser.com" },
-                { text: "My Wishlist", hRef: "ser.com" },
-                { text: "Track My Order", hRef: "ser.com" },
-                { text: "Help", hRef: "ser.com" },
+                { text: "Sign In", hRef: "https://github.com/PraiseImmanuel" },
+                {
+                    text: "View Cart",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                {
+                    text: "My Wishlist",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                {
+                    text: "Track My Order",
+                    hRef: "https://github.com/PraiseImmanuel",
+                },
+                { text: "Help", hRef: "https://github.com/PraiseImmanuel" },
             ],
         },
     ],

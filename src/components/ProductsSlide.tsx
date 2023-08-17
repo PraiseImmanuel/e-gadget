@@ -145,6 +145,29 @@ const FullProductWrapper = styled.div`
 
 const OverflowWrapper = styled.div`
     overflow-x: scroll;
+    ::-webkit-scrollbar {
+        background-color: #f1f1f1;
+        height: 0.5rem;
+        margin-top: 0.5rem;
+        /* width: 0.25rem; */
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #d3d3d3;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #fcb941;
+        border-radius: 1rem;
+    }
+
+    @supports (scrollbar-color: red blue) {
+        & {
+            scrollbar-width: thin;
+            scrollbar-color: #fcb941 #d3d3d3;
+            scroll-behavior: smooth;
+        }
+    }
 `;
 
 const ProductsContainer = styled.div`
